@@ -138,18 +138,20 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 // If the observer never fires (old browser, hidden tab), show everything anyway.
 setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight) el.classList.add('in'); }), 1500);
 
-/* ---------------- 01 Weave: handloom cloth, like an old saree or dhoti ----------------
-   Plain cotton body woven one-over-one, with the small irregularities of a hand loom,
-   a narrow dhoti stripe on one side, a red and zari border with a temple motif on the
-   other, and small buttas in the body. It weaves from the bottom up as you scroll. */
+/* ---------------- 01 Weave: a handloom at work ----------------
+   Plain cotton woven one-over-one with the small irregularities of a hand loom, a dhoti stripe
+   on one side, a red and zari border with a temple motif on the other, and buttas in the body.
+   It runs on a loom's own rhythm rather than on scroll: the shed opens, the shuttle carries one
+   weft thread across, the reed beats it into the cloth, and the cloth is taken up. */
 (function weave() {
   if (!$('weave')) return;
   const cv = $('weave'), ctx = cv.getContext('2d');
   const dpr = Math.max(1, window.devicePixelRatio || 1);
-  const C = { warp: '#e2d6bf', weft: '#f3ecdc', red: '#c2362b', deep: '#8f2219', zari: '#b8954f', zari2: '#d8bd7f', ink: '#2a2622', loom: 'rgba(42,38,34,.35)' };
-  const cell = 5;
-  let W, H, cols, rows, regions;
+  const C = { warp: '#e2d6bf', weft: '#f3ecdc', red: '#c2362b', deep: '#8f2219', zari: '#b8954f', zari2: '#d8bd7f', ink: '#2a2622', wood: '#8a5a2b', woodLight: '#b07a43' };
+  const cell = 5, PASS = 1000, BEAT = 300;   // ms for one shuttle pass, and for the reed to beat up
+  let W, H, cols, rows, regions, picks = 0, phase = 0, t0 = 0, running = false, visible = false;
   const hash = (x, y) => { const v = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453; return v - Math.floor(v); };
+  const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 
   function layout() {
     cols = Math.floor(W / cell); rows = Math.floor(H / cell);
@@ -173,53 +175,79 @@ setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => { c
   // The colour of a woven cell: which thread shows on top, plus border and motif rules.
   function cellColor(r, c) {
     const bs = regions.borderStart, warpUp = (r + c) % 2 === 0;
-    // temple border: triangles rising from the border into the body
     const P = 10, t = regions.temple, tooth = t - Math.abs((r % P) - P / 2) * (t / (P / 2));
     if (c < bs && c >= bs - t && bs - c <= tooth) return warpUp ? C.red : C.deep;
     if (c >= bs) return warpUp ? warpColor(c) : (c - bs === 2 || c - bs === 3 ? C.zari : C.red);
-    // buttas: small zari diamonds scattered through the body
     const br = r % 16, bc = (c + (Math.floor(r / 16) % 2) * 8) % 16;
     if (c > regions.kara[1] + 3 && c < bs - t - 2 && Math.abs(br - 8) + Math.abs(bc - 8) <= 1) return C.zari;
     if (warpUp) return warpColor(c);
-    // weft: cotton, a little uneven, with the odd thicker slub row
-    const slub = hash(0, r) > .93;
-    return slub ? '#e9dfc9' : C.weft;
+    return hash(0, r) > .93 ? '#e9dfc9' : C.weft;
   }
-  function size() {
-    const r = cv.getBoundingClientRect(); W = r.width; H = r.height;
-    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    layout(); draw();
+  function row(p, y, from, to) {
+    for (let c = from; c < to; c++) {
+      ctx.globalAlpha = 1 - Math.abs(hash(c, p) * .12 - .06);
+      ctx.fillStyle = cellColor(p, c);
+      ctx.fillRect(c * cell, y, cell, cell);
+    }
+    ctx.globalAlpha = 1;
   }
-  function progress() {
-    const r = cv.getBoundingClientRect();
-    return Math.max(0, Math.min(1, (innerHeight - r.top) / (r.height + innerHeight * .3)));
-  }
+  // The fell (where cloth meets open warp) climbs from the bottom, then holds while the cloth is taken up.
+  const fellY = n => Math.max(Math.round(H * .42 / cell) * cell, H - n * cell);
 
-  function draw() {
+  function draw(now) {
     if (!W) return;
-    const done = (reduce ? 1 : progress()) * rows;
+    const el = now - t0, pass = Math.min(1, el / PASS), beat = el > PASS ? Math.min(1, (el - PASS) / BEAT) : 0;
+    const fy = fellY(picks), cur = fy - cell;          // the row being woven sits just above the fell
     ctx.fillStyle = '#efe7d6'; ctx.fillRect(0, 0, W, H);
-    // unwoven warp on the loom
-    for (let c = 0; c < cols; c++) { ctx.fillStyle = warpColor(c); ctx.fillRect(c * cell + 1.5, 0, 2, H); }
-    // woven rows, bottom first
-    const full = Math.floor(done);
-    for (let i = 0; i < Math.min(rows, full + 1); i++) {
-      const r = i, y = H - (i + 1) * cell, upto = i < full ? cols : Math.floor((done - full) * cols);
-      for (let c = 0; c < upto; c++) {
-        const j = hash(c, r) * .12 - .06;
-        ctx.fillStyle = cellColor(r, c);
-        ctx.globalAlpha = 1 - Math.abs(j);
-        ctx.fillRect(c * cell, y, cell, cell);
-      }
-      ctx.globalAlpha = 1;
-      if (i === full && full < rows) { ctx.fillStyle = C.zari; ctx.fillRect(Math.max(0, upto * cell - 18), y + 1, 18, cell - 2); }
+    // open warp above the fell; the lifted half of the shed swaps every pick
+    for (let c = 0; c < cols; c++) {
+      const up = (c + picks) % 2 === 0;
+      ctx.fillStyle = warpColor(c); ctx.globalAlpha = up ? 1 : .55;
+      ctx.fillRect(c * cell + 1.5, 0, 2, cur);
+    }
+    ctx.globalAlpha = 1;
+    // finished cloth below the fell, newest row on top
+    for (let k = 0; k < picks && fy + k * cell < H; k++) row(picks - 1 - k, fy + k * cell, 0, cols);
+    // this pick's weft, laid behind the shuttle; passes alternate direction
+    const ltr = picks % 2 === 0, x = ease(pass) * cols;
+    if (ltr) row(picks, cur, 0, Math.floor(x)); else row(picks, cur, cols - Math.floor(x), cols);
+    // the reed: hangs a little above the cloth and swings down once the shuttle is through
+    const swing = beat ? Math.sin(beat * Math.PI) : 0, ry = cur - 16 + swing * 13;
+    ctx.fillStyle = 'rgba(42,38,34,.55)'; ctx.fillRect(0, ry, W, 2);
+    ctx.fillStyle = 'rgba(42,38,34,.18)';
+    for (let c = 0; c < cols; c += 2) ctx.fillRect(c * cell + 2, ry - 6, 1, 6);
+    // the shuttle, riding the shed
+    if (pass < 1) {
+      const sx = ltr ? x * cell : W - x * cell, sy = cur + cell / 2, L = 30, h = 7;
+      ctx.fillStyle = C.wood;
+      ctx.beginPath(); ctx.moveTo(sx - L / 2, sy); ctx.quadraticCurveTo(sx, sy - h, sx + L / 2, sy); ctx.quadraticCurveTo(sx, sy + h, sx - L / 2, sy); ctx.fill();
+      ctx.fillStyle = C.woodLight; ctx.fillRect(sx - 6, sy - 1.5, 12, 3);
     }
     // a soft fold of shadow to give the cloth some body
     const g = ctx.createLinearGradient(0, 0, W, 0);
     g.addColorStop(0, 'rgba(0,0,0,.05)'); g.addColorStop(.5, 'rgba(255,255,255,0)'); g.addColorStop(1, 'rgba(0,0,0,.06)');
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
   }
-  addEventListener('scroll', draw, { passive: true });
+  function tick(now) {
+    if (!running) return;
+    if (now - t0 >= PASS + BEAT) { picks++; t0 = now; }   // beat done: the cloth takes up one pick
+    draw(now);
+    requestAnimationFrame(tick);
+  }
+  function play() { if (running || reduce) return; running = true; t0 = performance.now(); requestAnimationFrame(tick); }
+  function size() {
+    const r = cv.getBoundingClientRect(); W = r.width; H = r.height;
+    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    layout();
+    if (reduce) { picks = Math.round(rows * .55); t0 = -1e9; }   // a still loom: cloth half woven, no shuttle
+    else if (!picks) picks = Math.round(rows * .58);              // start with the fell mid-card, so the shuttle is in view at once
+    draw(reduce ? 0 : performance.now());
+  }
+  // weave only while the loom is on screen
+  new IntersectionObserver(es => es.forEach(e => {
+    visible = e.isIntersecting;
+    if (visible) play(); else running = false;
+  })).observe(cv);
   addEventListener('resize', size);
   size();
 })();
@@ -291,8 +319,8 @@ setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => { c
       nodes.map(n => `<g class="node fade${n.person ? ' person' : ''}" style="opacity:${show.has(n.id) ? 1 : .12}"><rect x="${n.x}" y="${n.y}" width="${W}" height="${H}" rx="3"/><text x="${n.x + 10}" y="${n.y + 21}">${n.label}</text></g>`).join('') +
       (which === 1 ? `<text x="200" y="182" font-family="Geist Mono, monospace" font-size="11" fill="${threadColor()}">no room for the people who run it</text>` : '');
     $('draftNote').textContent = which === 1
-      ? 'Draft one: machines hand work straight to machines. The plant it describes does not exist.'
-      : 'Draft two: work routes through the people who actually run the floor.';
+      ? 'Version one: machines hand work straight to machines, which is not how the mill runs.'
+      : 'Version two: work routes through the people who actually run the floor.';
     document.querySelectorAll('.toggle button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.draft === which));
   }
   document.querySelectorAll('.toggle button').forEach(b => b.addEventListener('click', () => render(+b.dataset.draft)));

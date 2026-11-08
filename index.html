@@ -20,10 +20,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cinzel:wght@400;500&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Courier+Prime&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=51">
+<link rel="stylesheet" href="assets/site.css?v=57">
 </head>
 <body class="page-home">
 
+<script>/* the intro is for arriving at the top of the home page; a link to a section (Projects, Contact) goes straight there */ if (location.hash) document.documentElement.classList.add('no-intro');</script>
 <div class="intro" id="intro" aria-hidden="true">
   <div class="intro-inner">
     <div class="intro-word"><span style="--i:0">S</span><span style="--i:1">u</span><span style="--i:2">s</span><span style="--i:3">h</span><span style="--i:4">a</span><span style="--i:5">n</span><span style="--i:6">t</span><span style="--i:7">&nbsp;</span><span style="--i:8">E</span><span style="--i:9">l</span><span style="--i:10">a</span><span style="--i:11">n</span><span style="--i:12">g</span><span style="--i:13">o</span></div>
@@ -119,44 +120,56 @@
       <article class="proj reveal">
         <span class="label">Startup competition · Oct 2026</span>
         <h3>Iterum</h3>
-        <p>An audit for buildings about to be torn down: a walk-through scan and AI flag the reusable steel, wood, brick and glass, then price what is worth saving. I led the business side, from market sizing to the pitch at TechStart 2026.</p>
+        <div class="proj-stat"><span class="n">7+</span><span class="l">real estate professionals asked to see a pilot</span></div>
+        <p><b class="k">What</b>An AI-powered audit concept that scans a building before demolition, flags the reusable steel, wood, brick and glass, and prices what's worth saving.</p>
+        <p><b class="k">My part</b>Led business strategy, market sizing and the TechStart 2026 pitch in a team of three.</p>
         <ul class="tags"><li>Market sizing</li><li>Business model</li><li>Pitching</li></ul>
-        <div class="proj-links"><a href="ventures.html#iterum">Try the live audit demo &rarr;</a></div>
+        <div class="proj-links"><a href="ventures.html#iterum">Try the audit demo &rarr;</a></div>
       </article>
       <article class="proj reveal">
         <span class="label">Family business · 2026</span>
         <h3>Textile mill ERP</h3>
-        <p>An ERP built from scratch for my family's textile mill. The first draft assumed an automated plant, so I rebuilt it around the people who run the floor. The prototype is now used to train staff.</p>
+        <div class="proj-stat"><span class="n">40%</span><span class="l">target cut in production cycle time</span></div>
+        <p><b class="k">What</b>A ground-up ERP for a textile mill of 300+ workers, rebuilt around the people who run the floor after version one assumed full automation.</p>
+        <p><b class="k">My part</b>Mapped the mill's processes, redesigned the system, and saw the prototype into staff training.</p>
         <ul class="tags"><li>Process mapping</li><li>Systems design</li><li>Operations</li></ul>
-        <div class="proj-links"><a href="work.html#erp">See both drafts &rarr;</a></div>
+        <div class="proj-links"><a href="work.html#erp">See both versions &rarr;</a></div>
       </article>
       <article class="proj reveal">
         <span class="label">Excel capstone · Spring 2026</span>
         <h3>EXIM Bank lending analysis</h3>
-        <p>Cleaned 52,000+ rows of public U.S. EXIM Bank authorizations and built a FY2025 dashboard covering $8.7B across 1,383 deals. It showed a heavy lean on aviation and $4.6B of vaguely labelled deals, with recommendations for both.</p>
+        <div class="proj-stat"><span class="n">$8.7B</span><span class="l">of FY2025 export lending, mapped</span></div>
+        <p><b class="k">What</b>An Excel dashboard of U.S. EXIM Bank lending: 1,383 deals across 80+ industries and 160+ countries.</p>
+        <p><b class="k">My part</b>Cleaned 52,000+ rows, flagged a heavy aviation tilt and $4.6B in vaguely labelled deals, and recommended fixes for both.</p>
         <ul class="tags"><li>Excel</li><li>PivotTables</li><li>Dashboards</li></ul>
-        <div class="proj-links"><a href="https://github.com/SushantElango/exim-bank-excel-analysis" target="_blank" rel="noopener">Workbook &amp; write-up on GitHub &rarr;</a></div>
+        <div class="proj-links"><a href="https://github.com/SushantElango/exim-bank-excel-analysis" target="_blank" rel="noopener">Workbook on GitHub &rarr;</a></div>
       </article>
       <article class="proj reveal">
         <span class="label">Tableau capstone · Spring 2026</span>
         <h3>World data dashboards</h3>
-        <p>Tableau dashboards on the World database: where population concentrates, how life expectancy varies by region, and which languages reach the most countries, written up as market-access insights.</p>
+        <div class="proj-stat"><span class="n">SQL</span><span class="l">to Tableau, end to end</span></div>
+        <p><b class="k">What</b>Tableau dashboards on a MySQL World database: where population concentrates, how life expectancy varies, and which languages reach furthest.</p>
+        <p><b class="k">My part</b>Pulled the data, built the views, and wrote each one up as a market-access insight.</p>
         <ul class="tags"><li>Tableau</li><li>Data visualization</li><li>Insights</li></ul>
         <div class="proj-links"><a href="https://github.com/SushantElango/world-data-tableau" target="_blank" rel="noopener">Dashboards on GitHub &rarr;</a></div>
       </article>
       <article class="proj reveal">
         <span class="label">Startup competition · Feb 2026</span>
         <h3>RideRutgers</h3>
-        <p>A student rideshare I co-founded. I built its pricing model, which projected 67% lower rider costs than Uber and Lyft, and our team surveyed 50+ students before reaching the ScarletPitch semi-finals.</p>
+        <div class="proj-stat"><span class="n">70%</span><span class="l">of surveyed students said they would drive</span></div>
+        <p><b class="k">What</b>A peer-to-peer rideshare for Rutgers students, modelled at 67% below Uber and Lyft.</p>
+        <p><b class="k">My part</b>Built the pricing model, co-designed a survey of 50+ students, and reached the ScarletPitch semi-finals on our first pitch.</p>
         <ul class="tags"><li>Pricing model</li><li>Survey research</li><li>Pitching</li></ul>
         <div class="proj-links"><a href="ventures.html#riderutgers">Read the story &rarr;</a></div>
       </article>
       <article class="proj reveal">
         <span class="label">Web · Nov 2026</span>
         <h3>This website</h3>
-        <p>A hand-built, multi-page site in plain HTML, CSS and JavaScript, with small interactive pieces such as the audit demo and the settlement chart. Hosted on GitHub Pages.</p>
+        <div class="proj-stat"><span class="n">0</span><span class="l">templates</span></div>
+        <p><b class="k">What</b>This portfolio, in plain HTML, CSS and JavaScript, with a working loom, an audit demo and a settlement chart.</p>
+        <p><b class="k">My part</b>Directed the design and the story, building it with AI as my coding partner.</p>
         <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>GitHub Pages</li></ul>
-        <div class="proj-links"><a href="https://github.com/SushantElango/SushantElango.github.io" target="_blank" rel="noopener">Source code on GitHub &rarr;</a></div>
+        <div class="proj-links"><a href="https://github.com/SushantElango/SushantElango.github.io" target="_blank" rel="noopener">Source on GitHub &rarr;</a></div>
       </article>
     </div>
   </section>
@@ -165,7 +178,7 @@
   <section class="chapter explore" data-anchor="left">
     <div class="ch-head"><span class="label">Pick a thread to follow</span><span class="rule"></span></div>
     <div class="explore-grid">
-      <a class="ex-card reveal" href="work.html"><div class="ex-img"><img src="assets/photos/ssm/mill-wide.jpg" alt="" loading="lazy"></div><div class="ex-body"><h3>Work</h3><p>The mill, the ledger, the first thing I built, and the ERP.</p><span class="ex-go">Open &rarr;</span></div></a>
+      <a class="ex-card reveal" href="work.html"><div class="ex-img"><img src="assets/photos/ssm/mill-wide.jpg" alt="" loading="lazy"></div><div class="ex-body"><h3>Work</h3><p>The mill, its books, and the ERP I built for it.</p><span class="ex-go">Open &rarr;</span></div></a>
       <a class="ex-card reveal" href="internships.html"><div class="ex-img"><img src="assets/photos/tanindia/plant.jpg" alt="" loading="lazy"></div><div class="ex-body"><h3>Internships</h3><p>Redington, TanIndia and Piqit.</p><span class="ex-go">Open &rarr;</span></div></a>
       <a class="ex-card reveal" href="ventures.html"><div class="ex-img ex-blank"><span>Two pitches.</span></div><div class="ex-body"><h3>Ventures</h3><p>RideRutgers at ScarletPitch, and Iterum at TechStart.</p><span class="ex-go">Open &rarr;</span></div></a>
       <a class="ex-card reveal" href="film.html"><div class="ex-img ex-blank"><span>INT.</span></div><div class="ex-body"><h3>Film</h3><p>A notebook of stories, and one of them storyboarded.</p><span class="ex-go">Open &rarr;</span></div></a>
@@ -185,6 +198,6 @@
 </main>
 <footer class="label">© Sushant Elango · New Brunswick, NJ</footer>
 
-<script src="assets/site.js?v=51"></script>
+<script src="assets/site.js?v=57"></script>
 </body>
 </html>

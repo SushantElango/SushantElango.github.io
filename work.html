@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Work · Sushant Elango</title>
-<meta name="description" content="The mill, the ledger, the first thing I built, and the ERP.">
+<meta name="description" content="The mill, its books, and the ERP I built for it.">
 <meta name="theme-color" content="#f3f0e8">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://sushantelango.com/work.html">
@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cinzel:wght@400;500&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Courier+Prime&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=51">
+<link rel="stylesheet" href="assets/site.css?v=57">
 </head>
 <body class="page-work">
 
@@ -50,7 +50,7 @@
   <section class="page-head">
     <div class="label">Work · The mill and what came from it</div>
     <h1>Work<em>.</em></h1>
-    <p class="lede">What I learned on a textile mill floor, in its ledgers, and the systems I built from it.</p>
+    <p class="lede">I grew up inside my family's textile mill. I learned how it runs, kept its books, and built its ERP.</p>
   </section>
 
   <!-- 01 The Mill -->
@@ -59,9 +59,9 @@
     <figure class="ph band real reveal" data-slot="mill-floor"><img src="assets/photos/ssm/mill-family.jpg" alt="Sushant's grandfather, uncle and father standing by a vintage car under the SSM Processing Mills sign" loading="lazy"><figcaption>My grandfather, my uncle and my dad at SSM Processing Mills, Komarapalayam. Established 1969.</figcaption></figure>
     <div class="cols">
       <div class="prose reveal">
-        <h2>Where the thread <em>starts.</em></h2>
-        <p>At eleven I started going to my family's textile mill with my grandfather, who explained every process to me. I came back every school break for the next eight years, learning from the people who run it.</p>
-        <p>Each break brought more: checking incoming orders against physical stock, verifying raw material quality before it entered production, and working with plant staff to bring the facility into regulatory compliance.</p>
+        <h2>Eight years on a mill <em>floor.</em></h2>
+        <p>From age eleven I spent every school break at our mill, founded in 1969, learning each process from my grandfather and the people who run it.</p>
+        <p>Each year I took on more: matching orders to stock, approving raw material before production, and helping bring the plant into regulatory compliance.</p>
         <div class="stats">
           <div class="stat"><div class="n"><span data-count="300">300</span><span class="u">+</span></div><span class="label">Workers on the floor</span></div>
           <div class="stat"><div class="n"><span data-count="20">20</span><span class="u">+</span></div><span class="label">Production lines</span></div>
@@ -70,8 +70,8 @@
         <p class="fine">I coordinated through the mill's line supervisors.</p>
       </div>
       <div class="card reveal">
-        <span class="label">Handloom, woven as you scroll</span>
-        <canvas id="weave" aria-label="Handloom cloth with a red and zari border forming row by row"></canvas>
+        <span class="label">A handloom at work</span>
+        <canvas id="weave" aria-label="A handloom weaving cloth with a red and zari border, one thread at a time"></canvas>
       </div>
     </div>
   </section>
@@ -81,10 +81,10 @@
     <div class="ch-head"><span class="num">02</span><span class="label">The Ledger · Finance &amp; Accounts, 2026</span><span class="rule"></span></div>
     <div class="cols flip">
       <div class="prose reveal">
-        <h2>I learned finance to understand my family's <em>businesses.</em></h2>
-        <p>That is where finance started for me, not Wall Street. In 2026 I reconciled $70K+ a week in billing and purchases across three accounts in Tally, worked alongside two accounts staff, and supported month-end close.</p>
+        <h2>Then I kept its <em>books.</em></h2>
+        <p>In 2026 I reconciled $70K+ a week in billing and purchases across three accounts in Tally, alongside two accounts staff, and supported month-end close.</p>
         <p class="quote">"I didn't want to experiment with the company data with AI. At least not yet."</p>
-        <p>At Piqit, I reconciled marketplace settlements for fashion brands, from the sticker price down to what a brand is actually paid. Hover the chart to walk the chain.</p>
+        <p>At Piqit, I reconciled marketplace settlements for fashion brands, from the sticker price to what a brand is actually paid. Hover the chart to walk the chain.</p>
       </div>
       <div class="card reveal">
         <span class="label">How a marketplace sale becomes a payout</span>
@@ -95,14 +95,37 @@
     </div>
   </section>
 
-  <!-- Early work -->
-  <section class="chapter" id="rover" data-anchor="left">
-    <div class="ch-head"><span class="num">03</span><span class="label">Early work · FIRST LEGO League</span><span class="rule"></span></div>
+  <!-- 03 The ERP -->
+  <section class="chapter" id="erp" data-anchor="left">
+    <div class="ch-head"><span class="num">03</span><span class="label">The ERP · Built twice</span><span class="rule"></span></div>
+    <div class="cols">
+      <div class="prose reveal">
+        <h2>I built the mill an ERP. Then I <em>rebuilt it.</em></h2>
+        <p>Version one assumed an automated plant. But the mill runs on people at nearly every stage, so version two routes work through the supervisors and accounts staff who run it.</p>
+        <p>The prototype is now used to train staff, targeting a 40% cut in production cycle time. Rollout is pending.</p>
+      </div>
+      <div class="card reveal">
+        <div class="toggle" role="group" aria-label="ERP versions">
+          <button aria-pressed="false" data-draft="1">Version one</button>
+          <button aria-pressed="true" data-draft="2">Version two</button>
+        </div>
+        <svg id="drafts" viewBox="0 0 520 300" role="img" aria-label="Version one connects machines directly; version two routes work through line supervisors and accounts staff">
+          <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3b3934"/></marker></defs>
+          <g id="draftsG"></g>
+        </svg>
+        <p class="fine">A simplified sketch of the idea, not the real schema.</p>
+        <p class="fine" id="draftNote">Version two: work routes through the people who actually run the floor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Where building started -->
+  <section class="chapter" id="rover" data-anchor="right">
+    <div class="ch-head"><span class="num">04</span><span class="label">Early work · FIRST LEGO League</span><span class="rule"></span></div>
     <div class="cols flip">
       <div class="prose reveal">
-        <h2>The first thing I <em>built.</em></h2>
-        <p>In 4th grade, for FIRST LEGO League, I built a rover that sorted trash. A pressure sensor told it when a bin was full. I programmed it in LEGO's EV3 blocks.</p>
-        <p>Most of what I have built since, from an ERP to a pitch, comes back to the same question that rover asked: what is going on here, and what should happen next?</p>
+        <h2>Where building <em>started.</em></h2>
+        <p>In 4th grade, for FIRST LEGO League, I built and programmed a rover that sorted trash and knew when a bin was full.</p>
       </div>
       <div class="card reveal">
         <span class="label">How it worked · a sketch, reconstructed from memory</span>
@@ -120,30 +143,6 @@
     </div>
   </section>
 
-  <!-- 03 Two drafts -->
-  <section class="chapter" id="erp" data-anchor="right">
-    <div class="ch-head"><span class="num">04</span><span class="label">The ERP · Two drafts</span><span class="rule"></span></div>
-    <div class="cols">
-      <div class="prose reveal">
-        <h2>The first draft was for a factory that <em>doesn't exist.</em></h2>
-        <p>I built the mill's ERP from scratch. The first design assumed a fully automated plant. The real mill runs on heavy machinery, but it depends on people at nearly every stage.</p>
-        <p>So I rebuilt it around them. The prototype is now used to train staff, with a target of a 40% cut in production cycle time. Rollout is pending.</p>
-      </div>
-      <div class="card reveal">
-        <div class="toggle" role="group" aria-label="ERP drafts">
-          <button aria-pressed="false" data-draft="1">Draft one</button>
-          <button aria-pressed="true" data-draft="2">Draft two</button>
-        </div>
-        <svg id="drafts" viewBox="0 0 520 300" role="img" aria-label="Draft one connects machines directly; draft two routes work through line supervisors and accounts staff">
-          <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3b3934"/></marker></defs>
-          <g id="draftsG"></g>
-        </svg>
-        <p class="fine">A simplified sketch of the idea, not the real schema.</p>
-        <p class="fine" id="draftNote">Draft two: work routes through the people who actually run the floor.</p>
-      </div>
-    </div>
-  </section>
-
   <section class="contact" id="contact">
     <div class="label">The thread continues</div>
     <h2>What should I <em>build</em> next?</h2>
@@ -155,6 +154,6 @@
 </main>
 <footer class="label">© Sushant Elango · New Brunswick, NJ</footer>
 
-<script src="assets/site.js?v=51"></script>
+<script src="assets/site.js?v=57"></script>
 </body>
 </html>

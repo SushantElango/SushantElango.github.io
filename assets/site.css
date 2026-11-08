@@ -645,3 +645,15 @@ html[data-palette="racing"] footer { color: #b5c2b8; }
 @media (max-width: 860px) { .proj-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .skills-grid, .proj-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .proj, .proj:hover { transition: none; transform: none; } }
+
+/* project cards: one line that says what it is, before the detail */
+.proj .hook { font-family: var(--serif); font-size: 21px; line-height: 1.2; color: var(--ink); }
+
+/* project cards: a headline result, then What and My part, so each card scans in seconds */
+.proj-stat { display: flex; align-items: baseline; gap: 10px; padding: 6px 0 10px; border-bottom: 1px solid var(--rule); margin-bottom: 2px; }
+.proj-stat .n { font-family: var(--serif); font-size: 44px; line-height: 1; color: var(--thread); }
+.proj-stat .l { font-family: var(--mono); font-size: 11.5px; letter-spacing: .02em; color: var(--muted); line-height: 1.3; }
+.proj p .k { display: block; font-family: var(--mono); font-weight: 400; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+
+/* no name intro when the home page is opened at a section, e.g. index.html#projects */
+.no-intro .intro { display: none; }
