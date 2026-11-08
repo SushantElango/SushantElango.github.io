@@ -249,6 +249,8 @@ setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => { c
     if (visible) play(); else running = false;
   })).observe(cv);
   addEventListener('resize', size);
+  // the card's height follows the text beside it, which settles as fonts and images load
+  if ('ResizeObserver' in window) new ResizeObserver(() => size()).observe(cv);
   size();
 })();
 

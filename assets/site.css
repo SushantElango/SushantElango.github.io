@@ -110,7 +110,7 @@ main, header, footer { position: relative; z-index: 1; }
 .stat .label { margin-top: 6px; display: block; }
 
 /* 01 Weave */
-#weave { width: 100%; aspect-ratio: 4 / 3.2; display: block; }
+#weave { width: 100%; aspect-ratio: 4 / 3.6; display: block; }
 
 /* 02 Waterfall */
 .wf { display: grid; gap: 6px; }
@@ -657,3 +657,12 @@ html[data-palette="racing"] footer { color: #b5c2b8; }
 
 /* no name intro when the home page is opened at a section, e.g. index.html#projects */
 .no-intro .intro { display: none; }
+
+/* The loom card runs exactly as tall as the mill text beside it. The canvas fills whatever height
+   the card has (height 0 + flex-grow, with size containment so its pixel buffer never feeds back
+   into the layout). Stacked on narrow screens, it keeps a fixed shape instead. */
+@media (min-width: 861px) {
+  #work .cols { align-items: stretch; }
+  #work .card:has(#weave) { display: flex; flex-direction: column; }
+  #weave { aspect-ratio: auto; flex: 1 1 auto; height: 0; min-height: 300px; contain: size; }
+}
