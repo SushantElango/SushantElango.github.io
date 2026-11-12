@@ -228,13 +228,18 @@ setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => { c
     g.addColorStop(0, 'rgba(0,0,0,.05)'); g.addColorStop(.5, 'rgba(255,255,255,0)'); g.addColorStop(1, 'rgba(0,0,0,.06)');
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
   }
+  let lastNow = 0, boostUntil = 0;
   function tick(now) {
     if (!running) return;
+    const dt = lastNow ? now - lastNow : 0; lastNow = now;
+    if (now < boostUntil) t0 -= dt * 2;                     // a click throws the shuttle: the loom runs three times as fast for a moment
     if (now - t0 >= PASS + BEAT) { picks++; t0 = now; }   // beat done: the cloth takes up one pick
     draw(now);
     requestAnimationFrame(tick);
   }
-  function play() { if (running || reduce) return; running = true; t0 = performance.now(); requestAnimationFrame(tick); }
+  function play() { if (running || reduce) return; running = true; t0 = performance.now(); lastNow = 0; requestAnimationFrame(tick); }
+  cv.title = 'Click to throw the shuttle';
+  cv.addEventListener('click', () => { boostUntil = performance.now() + 2600; play(); });
   function size() {
     const r = cv.getBoundingClientRect(); W = r.width; H = r.height;
     cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -586,4 +591,16 @@ addEventListener('scroll', () => {
   neck.addEventListener('pointerdown', at);
   neck.addEventListener('pointerleave', () => { last = -1; });
   strings.forEach(s => s.addEventListener('animationend', () => s.classList.remove('ring')));
+})();
+
+/* ---------------- Projects: filter by kind ---------------- */
+(function filters() {
+  const bar = document.querySelector('.filters');
+  if (!bar) return;
+  const cards = [...document.querySelectorAll('.proj[data-cat]')];
+  bar.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    bar.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    cards.forEach(c => c.classList.toggle('hide', b.dataset.f !== 'all' && c.dataset.cat !== b.dataset.f));
+  });
 })();
