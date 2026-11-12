@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cinzel:wght@400;500&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Courier+Prime&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=69">
+<link rel="stylesheet" href="assets/site.css?v=73">
 </head>
 <body class="page-home">
 
@@ -38,32 +38,33 @@
 <svg id="thread" aria-hidden="true"><path id="threadPath"/></svg>
 
 <header class="nav">
-  <div class="devbar" role="status"><span class="dot"></span>Under development: new photos and sections are on the way. Everything you read here is current.</div>
   <div class="nav-row">
     <a class="mark" href="index.html" aria-label="Sushant Elango, home"><span>Sushant Elango</span></a>
     <nav aria-label="Pages">
-      <a href="index.html#experience">Experience</a>
-      <a href="index.html#projects">Projects</a>
       <a href="work.html">Work</a>
       <a href="internships.html">Internships</a>
       <a href="ventures.html">Ventures</a>
-      <a href="film.html">Film</a>
-      <a href="life.html">Life</a>
-      <a href="credits.html">Credits</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="life.html">Off the clock</a>
+      <a href="credits.html">Résumé</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <!-- Hero: one thread between two homes -->
+  <!-- Hero: who he is in one line, the two points he leads with, and where to go next (rebuilt 12 Nov 2026) -->
   <section class="hero">
     <div class="hero-grid">
       <div>
         <div class="label">Business Analytics &amp; IT · Rutgers Business School · Class of 2028</div>
-        <h1>I am Sushant, and I love making <em>ambitious</em> things work.</h1>
-        <p class="lede">A textile mill in Tamil Nadu taught me how a business really runs, and now I am in pursuit of building my own.</p>
-        <div class="status"><i></i>Open to Summer 2027 internships in finance and operations</div>
+        <h1>Finance and operations, learned on a mill <em>floor.</em></h1>
+        <p class="lede">I am Sushant. I spent eight years of school breaks at my family's textile mill in Tamil Nadu, then kept its books and built its ERP. Since then, three internships in three industries.</p>
+        <div class="hero-acts">
+          <a class="btn solid" href="#proof">See the work &darr;</a>
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn quiet" href="credits.html">The résumé version &rarr;</a>
+        </div>
       </div>
       <figure class="ph portrait real" data-slot="portrait"><img src="assets/photos/portrait-clean.jpg" alt="Sushant Elango in a grey suit and a red floral tie, in front of a red booth curtain" fetchpriority="high"></figure>
     </div>
@@ -84,28 +85,84 @@
         </div>
       </div>
     </div>
-
-    <div class="rope-wrap" data-anchor="hero">
-      <canvas id="rope" aria-hidden="true"></canvas>
-      <div class="clock l">
-        <figure class="ph home real" data-slot="home-india"><img src="assets/photos/ssm/mill-wide.jpg" alt="The front of SSM Processing Mills" loading="lazy"></figure>
-        <span class="label">Komarapalayam, TN</span>
-        <span class="t" id="clockIST">--:--<small>IST</small></span>
-      </div>
-      <div class="clock r">
-        <figure class="ph home real" data-slot="home-nj"><img src="assets/photos/home/new-brunswick-gate.jpg" alt="Sushant standing between open iron gates under the red RUTGERS railroad bridge in New Brunswick" loading="lazy"></figure>
-        <span class="label">New Brunswick, NJ</span>
-        <span class="t" id="clockEST">--:--<small>ET</small></span>
-      </div>
-      <span class="label rope-note">Two homes, <b id="gap">--</b> hours apart.</span>
-    </div>
   </section>
-
 
   <!-- Where I've learned -->
   <section class="logos" aria-label="Where I have learned">
     <span class="label">Where I've learned</span>
-    <ul><li data-slot="logo" class="has-logo"><img src="assets/logos/rutgers-business-school.png" alt="Rutgers Business School" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/ssm.png" alt="SSM Processing Mills" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/redington.svg" alt="Redington" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/tanindia.png" alt="Tan Pro, TanIndia Earth Ventures" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/first-lego-league.svg" alt="FIRST LEGO League" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/scarletpitch.png" alt="ScarletPitch" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/techstart.png" alt="TechStart 2026" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/piqit.png" alt="Piqit" loading="lazy"></li></ul>
+    <ul><li data-slot="logo" class="has-logo"><img src="assets/logos/rutgers-business-school.png" alt="Rutgers Business School" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/ssm.png" alt="SSM Processing Mills" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/redington.svg" alt="Redington" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/tanindia.png" alt="Tan Pro, TanIndia Earth Ventures" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/piqit.png" alt="Piqit" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/scarletpitch.png" alt="ScarletPitch" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/techstart.png" alt="TechStart 2026" loading="lazy"></li><li data-slot="logo" class="has-logo"><img src="assets/logos/first-lego-league.svg" alt="FIRST LEGO League" loading="lazy"></li></ul>
+  </section>
+
+  <!-- The proof: three chapters, each with the real demo inline, so nobody has to click away to find it -->
+  <section class="chapter proof-head" id="proof" data-anchor="left">
+    <div class="ch-head"><span class="label">The work · Three things you can try</span><span class="rule"></span></div>
+    <h2 class="reveal">Don't take my word for it. <em>Try it.</em></h2>
+    <p class="proof-lede reveal">The floor I learned on, the books I kept, and the system I built for it. Each one is live: click, hover and switch.</p>
+  </section>
+
+  <!-- 01 The floor -->
+  <section class="chapter proof" id="floor" data-anchor="right">
+    <div class="ch-head"><span class="num">01</span><span class="label">The floor · SSM Processing Mills, 2018 – 2026</span><span class="rule"></span></div>
+    <div class="cols">
+      <div class="prose reveal">
+        <h2>Eight years on a mill <em>floor.</em></h2>
+        <p>From age eleven I spent every school break at our mill, founded in 1969, learning each process from my grandfather and the people who run it.</p>
+        <p>Each year I took on more: matching orders to stock, approving raw material before production, and helping bring the plant into regulatory compliance, coordinating through the mill's line supervisors.</p>
+        <div class="stats">
+          <div class="stat"><div class="n"><span data-count="300">300</span><span class="u">+</span></div><span class="label">Workers on the floor</span></div>
+          <div class="stat"><div class="n"><span data-count="20">20</span><span class="u">+</span></div><span class="label">Production lines</span></div>
+        </div>
+        <a class="more" href="work.html">The mill, in full &rarr;</a>
+      </div>
+      <div class="card reveal">
+        <span class="label">A handloom at work · click to throw the shuttle</span>
+        <canvas id="weave" aria-label="A handloom weaving cloth with a red and zari border, one thread at a time"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 The books -->
+  <section class="chapter proof" id="books" data-anchor="left">
+    <div class="ch-head"><span class="num">02</span><span class="label">The books · Finance &amp; Accounts, 2026</span><span class="rule"></span></div>
+    <div class="cols flip">
+      <div class="prose reveal">
+        <h2>$70K+ a week, <em>reconciled.</em></h2>
+        <p>At the mill I reconciled $70K+ a week in billing and purchases across three accounts in Tally, alongside two accounts staff, and supported month-end close.</p>
+        <p>At Piqit I reconciled weekly marketplace settlements for fashion brands, from the sticker price to what a brand is actually paid. Hover the chart to walk the chain.</p>
+        <a class="more" href="internships.html">The internships &rarr;</a>
+      </div>
+      <div class="card reveal">
+        <span class="label">How a marketplace sale becomes a payout</span>
+        <div class="wf" id="wf"></div>
+        <div class="wf-tip" id="wfTip">Every rupee between the sticker price and the payout has a reason. This is the chain I reconcile.</div>
+        <p class="fine">Illustrative numbers per 100 of MRP. Real settlement data stays private.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 The system -->
+  <section class="chapter proof" id="system" data-anchor="right">
+    <div class="ch-head"><span class="num">03</span><span class="label">The system · An ERP, built twice</span><span class="rule"></span></div>
+    <div class="cols">
+      <div class="prose reveal">
+        <h2>I built the mill an ERP. Then I <em>rebuilt it.</em></h2>
+        <p>Version one assumed an automated plant. But the mill runs on people at nearly every stage, so version two routes work through the supervisors and accounts staff who run it.</p>
+        <p>The prototype is now used to train staff, targeting a 40% cut in production cycle time. Rollout is pending. Switch between the two versions to see what changed.</p>
+        <a class="more" href="work.html#erp">How I got there &rarr;</a>
+      </div>
+      <div class="card reveal">
+        <div class="toggle" role="group" aria-label="ERP versions">
+          <button aria-pressed="false" data-draft="1">Version one</button>
+          <button aria-pressed="true" data-draft="2">Version two</button>
+        </div>
+        <svg id="drafts" viewBox="0 0 520 300" role="img" aria-label="Version one connects machines directly; version two routes work through line supervisors and accounts staff">
+          <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3b3934"/></marker></defs>
+          <g id="draftsG"></g>
+        </svg>
+        <p class="fine">A simplified sketch of the idea, not the real schema.</p>
+        <p class="fine" id="draftNote">Version two: work routes through the people who actually run the floor.</p>
+      </div>
+    </div>
   </section>
 
   <!-- Experience -->
@@ -119,45 +176,15 @@
       <li class="reveal"><span class="when">Jul – Aug 2025 · Chennai</span><h3>IT Intern <span class="at">@ Redington Ltd</span></h3><p>Built 3+ dashboards on employee IT support tickets, working alone, and presented what I found to my mentor.</p><a href="internships.html">More &rarr;</a></li>
       <li class="reveal"><span class="when">2018 – 2026 · School breaks</span><h3>Operations Supervisor <span class="at">@ SSM Processing Mills</span></h3><p>Matched orders to stock and approved raw material before production, coordinating through the line supervisors of a 300+ worker floor.</p><a href="work.html">More &rarr;</a></li>
     </ol>
+    <p class="toolbelt reveal"><span class="label">Tools on real work</span>Excel · SQL · Tableau · Power BI · Tally · SAP (SD, MM, FICO) · Python</p>
   </section>
 
-  <!-- Skills -->
-  <section class="chapter" id="skills" data-anchor="right">
-    <div class="ch-head"><span class="label">Skills · What I bring to a team</span><span class="rule"></span></div>
-    <h2 class="reveal">Tools I have used on real <em>work.</em></h2>
-    <div class="skills-grid">
-      <div class="skill-group reveal">
-        <span class="label">Data &amp; analytics</span>
-        <ul class="chips"><li>Excel: PivotTables, SUMIFS, dashboards</li><li>SQL</li><li>Tableau</li><li>Power BI</li><li>Python</li><li>R</li></ul>
-      </div>
-      <div class="skill-group reveal">
-        <span class="label">Finance &amp; operations</span>
-        <ul class="chips"><li>Reconciliation &amp; month-end close</li><li>Tally</li><li>SAP ERP: SD, MM, FICO</li><li>ERP design</li><li>Pricing models</li><li>Market sizing</li></ul>
-      </div>
-      <div class="skill-group reveal">
-        <span class="label">Web &amp; AI</span>
-        <ul class="chips"><li>HTML, CSS, JavaScript</li><li>Git &amp; GitHub</li><li>Shopify &amp; web scraping</li><li>AI tools: Claude, DALL-E, Runway</li><li>Canva &amp; Adobe</li></ul>
-      </div>
-      <div class="skill-group reveal">
-        <span class="label">People &amp; languages</span>
-        <ul class="chips"><li>Pitching &amp; presenting</li><li>Working with plant staff</li><li>English</li><li>Tamil</li><li>Telugu</li><li>Hindi</li><li>Kannada</li><li>Malayalam</li><li>French (some)</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section class="chapter" id="projects" data-anchor="left">
+  <!-- Projects: the four that carry a result -->
+  <section class="chapter" id="projects" data-anchor="right">
     <div class="ch-head"><span class="label">Projects · Selected work</span><span class="rule"></span></div>
     <h2 class="reveal">Things I have <em>built.</em></h2>
-    <div class="filters" role="group" aria-label="Filter projects">
-      <button type="button" aria-pressed="true" data-f="all">All</button>
-      <button type="button" aria-pressed="false" data-f="operations">Operations</button>
-      <button type="button" aria-pressed="false" data-f="data">Finance &amp; data</button>
-      <button type="button" aria-pressed="false" data-f="ventures">Ventures</button>
-      <button type="button" aria-pressed="false" data-f="web">Web</button>
-    </div>
-    <div class="proj-grid">
-      <article class="proj reveal" data-cat="ventures">
+    <div class="proj-grid two">
+      <article class="proj reveal">
         <span class="label">Startup competition · Oct 2026</span>
         <h3>Iterum</h3>
         <div class="proj-stat"><span class="n">7+</span><span class="l">real estate professionals asked to see a pilot</span></div>
@@ -166,16 +193,7 @@
         <ul class="tags"><li>Market sizing</li><li>Business model</li><li>Pitching</li></ul>
         <div class="proj-links"><a href="ventures.html#iterum">Try the audit demo &rarr;</a></div>
       </article>
-      <article class="proj reveal" data-cat="operations">
-        <span class="label">Family business · 2026</span>
-        <h3>Textile mill ERP</h3>
-        <div class="proj-stat"><span class="n">40%</span><span class="l">target cut in production cycle time</span></div>
-        <p><b class="k">What</b>A ground-up ERP for a textile mill of 300+ workers, rebuilt around the people who run the floor after version one assumed full automation.</p>
-        <p><b class="k">My part</b>Mapped the mill's processes, redesigned the system, and saw the prototype into staff training.</p>
-        <ul class="tags"><li>Process mapping</li><li>Systems design</li><li>Operations</li></ul>
-        <div class="proj-links"><a href="work.html#erp">See both versions &rarr;</a></div>
-      </article>
-      <article class="proj reveal" data-cat="data">
+      <article class="proj reveal">
         <span class="label">Excel capstone · Spring 2026</span>
         <h3>EXIM Bank lending analysis</h3>
         <div class="proj-stat"><span class="n">$8.7B</span><span class="l">of FY2025 export lending, mapped</span></div>
@@ -184,16 +202,7 @@
         <ul class="tags"><li>Excel</li><li>PivotTables</li><li>Dashboards</li></ul>
         <div class="proj-links"><a href="https://github.com/SushantElango/exim-bank-excel-analysis" target="_blank" rel="noopener">Workbook on GitHub &rarr;</a></div>
       </article>
-      <article class="proj reveal" data-cat="data">
-        <span class="label">Tableau capstone · Spring 2026</span>
-        <h3>World data dashboards</h3>
-        <div class="proj-stat"><span class="n">SQL</span><span class="l">to Tableau, end to end</span></div>
-        <p><b class="k">What</b>Tableau dashboards on a MySQL World database: where population concentrates, how life expectancy varies, and which languages reach furthest.</p>
-        <p><b class="k">My part</b>Pulled the data, built the views, and wrote each one up as a market-access insight.</p>
-        <ul class="tags"><li>Tableau</li><li>Data visualization</li><li>Insights</li></ul>
-        <div class="proj-links"><a href="https://github.com/SushantElango/world-data-tableau" target="_blank" rel="noopener">Dashboards on GitHub &rarr;</a></div>
-      </article>
-      <article class="proj reveal" data-cat="ventures">
+      <article class="proj reveal">
         <span class="label">Startup competition · Feb 2026</span>
         <h3>RideRutgers</h3>
         <div class="proj-stat"><span class="n">70%</span><span class="l">of surveyed students said they would drive</span></div>
@@ -202,29 +211,17 @@
         <ul class="tags"><li>Pricing model</li><li>Survey research</li><li>Pitching</li></ul>
         <div class="proj-links"><a href="ventures.html#riderutgers">Read the story &rarr;</a></div>
       </article>
-      <article class="proj reveal" data-cat="web">
-        <span class="label">Web · Nov 2026</span>
-        <h3>This website</h3>
-        <div class="proj-stat"><span class="n">60+</span><span class="l">versions shipped to get it right</span></div>
-        <p><b class="k">What</b>This portfolio, in plain HTML, CSS and JavaScript, with a working loom, an audit demo and a settlement chart.</p>
-        <p><b class="k">My part</b>Directed the design and the story, building it with AI as my coding partner.</p>
-        <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>GitHub Pages</li></ul>
-        <div class="proj-links"><a href="https://github.com/SushantElango/SushantElango.github.io" target="_blank" rel="noopener">Source on GitHub &rarr;</a></div>
+      <article class="proj reveal">
+        <span class="label">Tableau capstone · Spring 2026</span>
+        <h3>World data dashboards</h3>
+        <div class="proj-stat"><span class="n">SQL</span><span class="l">to Tableau, end to end</span></div>
+        <p><b class="k">What</b>Tableau dashboards on a MySQL World database: where population concentrates, how life expectancy varies, and which languages reach furthest.</p>
+        <p><b class="k">My part</b>Pulled the data, built the views, and wrote each one up as a market-access insight.</p>
+        <ul class="tags"><li>Tableau</li><li>Data visualization</li><li>Insights</li></ul>
+        <div class="proj-links"><a href="https://github.com/SushantElango/world-data-tableau" target="_blank" rel="noopener">Dashboards on GitHub &rarr;</a></div>
       </article>
     </div>
-  </section>
-
-  <!-- Explore -->
-  <section class="chapter explore" data-anchor="right">
-    <div class="ch-head"><span class="label">Pick a thread to follow</span><span class="rule"></span></div>
-    <div class="explore-grid">
-      <a class="ex-card reveal" href="work.html"><div class="ex-img"><img src="assets/photos/ssm/mill-wide.jpg" alt="" loading="lazy"></div><div class="ex-body"><h3>Work</h3><p>The mill, its books, and the ERP I built for it.</p><span class="ex-go">Open &rarr;</span></div></a>
-      <a class="ex-card reveal" href="internships.html"><div class="ex-img"><img src="assets/photos/tanindia/plant.jpg" alt="" loading="lazy"></div><div class="ex-body"><h3>Internships</h3><p>Redington, TanIndia and Piqit.</p><span class="ex-go">Open &rarr;</span></div></a>
-      <a class="ex-card reveal" href="ventures.html"><div class="ex-img ex-blank"><span>Two pitches.</span></div><div class="ex-body"><h3>Ventures</h3><p>RideRutgers at ScarletPitch, and Iterum at TechStart.</p><span class="ex-go">Open &rarr;</span></div></a>
-      <a class="ex-card reveal" href="film.html"><div class="ex-img ex-blank"><span>INT.</span></div><div class="ex-body"><h3>Film</h3><p>A notebook of stories, and one of them storyboarded.</p><span class="ex-go">Open &rarr;</span></div></a>
-      <a class="ex-card reveal" href="life.html"><div class="ex-img"><img src="assets/photos/life/brooklyn.jpg" alt="" loading="lazy"></div><div class="ex-body"><h3>Life</h3><p>Seven languages, tennis, games, and what I am into right now.</p><span class="ex-go">Open &rarr;</span></div></a>
-      <a class="ex-card reveal" href="credits.html"><div class="ex-img ex-blank"><span>CV</span></div><div class="ex-body"><h3>Credits</h3><p>The short version, the way a résumé tells it.</p><span class="ex-go">Open &rarr;</span></div></a>
-    </div>
+    <p class="fine site-note">This site: plain HTML, CSS and JavaScript. I directed the design and wrote the content, building it with AI as my coding partner. <a href="https://github.com/SushantElango/SushantElango.github.io" target="_blank" rel="noopener">Source on GitHub</a></p>
   </section>
 
   <section class="contact" id="contact">
@@ -238,6 +235,6 @@
 </main>
 <footer class="label">© Sushant Elango · New Brunswick, NJ</footer>
 
-<script src="assets/site.js?v=69"></script>
+<script src="assets/site.js?v=73"></script>
 </body>
 </html>

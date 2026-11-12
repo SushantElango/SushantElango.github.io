@@ -81,9 +81,9 @@ if ($('clockIST')) { clocks(); setInterval(clocks, 20000); }
       pts.push({ x, y: top + pt + 4 }, { x, y: top + r.height - 4 });
     });
     pts.sort((a, b) => a.y - b.y);
-    // Section pages have no rope, so the thread starts from a knot in the header above
-    // the first chapter instead of appearing out of nowhere in the cream.
-    const head = document.querySelector('.page-head');
+    // The thread starts from a knot at the foot of the black header (the hero on the home page)
+    // above the first chapter, instead of appearing out of nowhere in the white.
+    const head = document.querySelector('.page-head, .hero');
     if (head && pts.length) {
       const start = { x: pts[0].x, y: head.getBoundingClientRect().bottom + scrollY - 34 };
       pts.unshift(start);
@@ -566,31 +566,6 @@ addEventListener('scroll', () => {
   el.addEventListener('click', skip);
   addEventListener('keydown', skip, { once: true });
   el.addEventListener('animationend', e => { if (e.target === el) done(); });
-})();
-
-/* ---------------- Guitar: each string rings as the pointer crosses it ---------------- */
-(function guitar() {
-  const neck = $('neck');
-  if (!neck) return;
-  const strings = [...neck.querySelectorAll('.string')];
-  let last = -1;
-  const hint = neck.parentElement.querySelector('.hint');
-  if (hint && matchMedia('(hover: none)').matches) hint.textContent = 'Drag across the strings.';
-  function at(e) {
-    const r = neck.getBoundingClientRect(), y = (e.clientY - r.top) / r.height * 90;
-    // nearest string within half the spacing
-    let best = -1, d = 7;
-    strings.forEach((s, i) => { const dy = Math.abs(+s.getAttribute('y1') - y); if (dy < d) { d = dy; best = i; } });
-    if (best >= 0 && best !== last) {
-      const s = strings[best];
-      s.classList.remove('ring'); void s.getBoundingClientRect(); s.classList.add('ring');
-    }
-    last = best;
-  }
-  neck.addEventListener('pointermove', at);
-  neck.addEventListener('pointerdown', at);
-  neck.addEventListener('pointerleave', () => { last = -1; });
-  strings.forEach(s => s.addEventListener('animationend', () => s.classList.remove('ring')));
 })();
 
 /* ---------------- Projects: filter by kind ---------------- */

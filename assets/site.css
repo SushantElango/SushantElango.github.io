@@ -415,9 +415,6 @@ footer { text-align: center; padding: 30px var(--gutter) 40px; }
 
 /* ---------- Multi-page: header with the under-development bar ---------- */
 .nav { display: block; padding: 0; }
-.devbar { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 7px var(--gutter);
-  background: var(--ink); color: #f3f0e8; font-family: var(--mono); font-size: 11.5px; letter-spacing: .02em; text-align: center; }
-.devbar .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--thread); flex: none; animation: pulse 1.8s ease-in-out infinite; }
 .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px var(--gutter); }
 .nav nav a[aria-current="page"] { color: var(--thread); }
 .nav nav a[aria-current="page"]::after { content: ""; display: block; height: 1.5px; background: var(--thread); margin-top: 2px; }
@@ -455,8 +452,7 @@ footer { text-align: center; padding: 30px var(--gutter) 40px; }
 @media (max-width: 640px) {
   .nav-row { flex-wrap: wrap; gap: 6px 14px; padding: 10px 16px 8px; }
   .nav-row nav { width: 100%; gap: 16px; padding-bottom: 2px; }
-  .devbar { font-size: 10.5px; padding: 6px 12px; }
-}
+  }
 @media (max-width: 520px) {
   .explore-grid { grid-template-columns: minmax(0, 1fr); }
 }
@@ -566,9 +562,7 @@ html[data-palette="polo"] .nav { background: rgba(15, 26, 51, .95); }
 html[data-palette="polo"] .nav .mark, html[data-palette="polo"] .nav nav a { color: #f4efe4; }
 html[data-palette="polo"] .nav nav a:hover, html[data-palette="polo"] .nav nav a[aria-current="page"] { color: var(--red-on-navy); }
 html[data-palette="polo"] .nav nav a[aria-current="page"]::after { background: var(--red-on-navy); }
-html[data-palette="polo"] .devbar { background: #0a1326; }
-html[data-palette="polo"] .devbar .dot { background: var(--red-on-navy); }
-html[data-palette="polo"] footer { color: #a7adbd; }
+html[data-palette="polo"] html[data-palette="polo"] html[data-palette="polo"] footer { color: #a7adbd; }
 
 /* ---------- Palette: Racing green (build.py PALETTE = 'racing') ----------
    Racing green for the dark sections with brass on it, warm cream for reading, green as the
@@ -590,9 +584,7 @@ html[data-palette="racing"] .nav { background: rgba(12, 50, 38, .95); }
 html[data-palette="racing"] .nav .mark, html[data-palette="racing"] .nav nav a { color: #f1ead9; }
 html[data-palette="racing"] .nav nav a:hover, html[data-palette="racing"] .nav nav a[aria-current="page"] { color: var(--brass); }
 html[data-palette="racing"] .nav nav a[aria-current="page"]::after { background: var(--brass); }
-html[data-palette="racing"] .devbar { background: #0a2b20; }
-html[data-palette="racing"] .devbar .dot { background: var(--brass); }
-html[data-palette="racing"] footer { color: #b5c2b8; }
+html[data-palette="racing"] html[data-palette="racing"] html[data-palette="racing"] footer { color: #b5c2b8; }
 
 /* a clock without its photo keeps the photo's space, so both clocks still line up */
 .clock:not(:has(.ph))::before { content: ""; display: block; height: 80px; margin-bottom: 8px; }
@@ -600,18 +592,9 @@ html[data-palette="racing"] footer { color: #b5c2b8; }
 /* without its photo, the screenplay card stands on its own instead of tucking under the photo */
 .collage:not(:has(.collage-photo)) .script { margin-top: 0 !important; transform: rotate(-1.2deg); }
 
-/* ---------- Guitar: a neck across the full width, strings ring when the cursor crosses them ---------- */
+/* ---------- Guitar card: full width under the other cards ---------- */
 .life .guitar { grid-column: span 6; min-height: 0; }
-.guitar .hint { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-.guitar .neck { display: block; width: 100%; height: 96px; margin-top: 14px; touch-action: pan-y; cursor: crosshair;
-  background: linear-gradient(90deg, rgba(22,21,19,.07), rgba(22,21,19,.03)); border-radius: 3px; }
-.guitar .fret { stroke: var(--muted); stroke-width: 2; opacity: .55; }
-.guitar .string { stroke: var(--ink-2); vector-effect: non-scaling-stroke; transform-box: fill-box; transform-origin: center; transition: stroke .6s; }
-.guitar .string.ring { stroke: var(--thread); animation: ring .7s cubic-bezier(.2,.6,.3,1); }
-@keyframes ring { 0% { transform: translateY(0); } 10% { transform: translateY(-2.2px); } 22% { transform: translateY(1.8px); } 36% { transform: translateY(-1.2px); }
-  52% { transform: translateY(.8px); } 70% { transform: translateY(-.4px); } 100% { transform: translateY(0); } }
 @media (max-width: 860px) { .life .guitar { grid-column: span 2; } }
-@media (prefers-reduced-motion: reduce) { .guitar .string.ring { animation: none; } }
 
 /* Games: a frame he composed in Control's photo mode */
 .games .shot { margin: 14px 0 0; margin-top: auto; padding-top: 14px; }
@@ -733,7 +716,47 @@ html[data-palette="mono"] .nav { background: rgba(10, 10, 10, .95); }
 html[data-palette="mono"] .nav .mark, html[data-palette="mono"] .nav nav a { color: #ffffff; }
 html[data-palette="mono"] .nav nav a:hover, html[data-palette="mono"] .nav nav a[aria-current="page"] { color: var(--red-on-black); }
 html[data-palette="mono"] .nav nav a[aria-current="page"]::after { background: var(--red-on-black); }
-html[data-palette="mono"] .devbar { background: #000000; }
-html[data-palette="mono"] .devbar .dot { background: var(--red-on-black); }
-html[data-palette="mono"] footer { background: #0a0a0a; color: #9a9a9a; }
+html[data-palette="mono"] html[data-palette="mono"] html[data-palette="mono"] footer { background: #0a0a0a; color: #9a9a9a; }
 html[data-palette="mono"] #thread .thread-start { fill: #ffffff; }
+
+/* ---------- Home rebuilt around the proof (12 Nov 2026) ---------- */
+/* hero: three ways on, the work first */
+.hero-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin-top: clamp(22px, 3vw, 32px); }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 13px; letter-spacing: .02em; text-decoration: none;
+  color: var(--ink); border: 1px solid var(--rule); border-radius: 3px; padding: 11px 16px; transition: background .2s, border-color .2s, color .2s, transform .2s; }
+.btn:hover { border-color: var(--thread); color: var(--thread); }
+.btn.solid { background: var(--thread); border-color: var(--thread); color: #fff; }
+.btn.solid:hover { background: #fff; border-color: #fff; color: #0a0a0a; }
+.btn.quiet { border-color: transparent; padding-left: 4px; padding-right: 4px; color: var(--ink-2); }
+.btn.quiet:hover { color: var(--thread); }
+.hero-acts .btn:active { transform: translateY(1px); }
+
+/* the proof: a short lead-in, then three chapters, each with its demo beside the words */
+.proof-head h2 { margin-bottom: 14px; }
+.proof-lede { max-width: 58ch; font-size: clamp(16px, 1.5vw, 19px); color: var(--ink-2); }
+.chapter.proof { padding-top: clamp(56px, 8vw, 110px); }
+.proof-head + .chapter.proof { padding-top: clamp(36px, 5vw, 60px); }
+.chapter.proof .card { box-shadow: 0 24px 50px -36px rgba(0, 0, 0, .45); }
+.chapter.proof .card:hover { border-color: rgba(225, 6, 0, .35); }
+#floor .stats { grid-template-columns: repeat(2, 1fr); }
+.more { display: inline-block; margin-top: 18px; font-family: var(--mono); font-size: 12.5px; color: var(--thread); text-decoration: none; border-bottom: 1px solid transparent; }
+.more:hover, .more:focus-visible { border-bottom-color: var(--thread); }
+/* the loom on the home page runs as tall as the words beside it, as it does on Work */
+@media (min-width: 861px) {
+  #floor .cols { align-items: stretch; }
+  #floor .card:has(#weave) { display: flex; flex-direction: column; }
+}
+
+/* experience: the tools in one line instead of a wall of chips */
+.toolbelt { max-width: 860px; margin-top: 6px; padding: 16px 0 0 34px; border-top: 1px solid var(--rule); font-size: 15.5px; color: var(--ink); line-height: 1.7; }
+.toolbelt .label { display: block; color: var(--thread); margin-bottom: 4px; }
+
+/* projects: four cards, two by two */
+.proj-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) { .proj-grid.two { grid-template-columns: minmax(0, 1fr); } }
+.site-note { margin-top: 22px; }
+.site-note a { color: var(--thread); }
+
+/* Off the clock: two photos side by side */
+.wall.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 820px; }
+@media (max-width: 520px) { .wall.two { grid-template-columns: minmax(0, 1fr); } }
