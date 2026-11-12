@@ -760,3 +760,84 @@ html[data-palette="mono"] #thread .thread-start { fill: #ffffff; }
 /* Off the clock: two photos side by side */
 .wall.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 820px; }
 @media (max-width: 520px) { .wall.two { grid-template-columns: minmax(0, 1fr); } }
+
+/* Off the clock: the films and games shelves answer the cursor, like spines pulled from a shelf (12 Nov 2026) */
+.shelf li { transition: transform .3s cubic-bezier(.2, .7, .2, 1), border-color .25s, box-shadow .3s; }
+.shelf li:hover { transform: translateY(-8px); border-color: var(--thread); box-shadow: 0 22px 36px -26px rgba(0, 0, 0, .55); }
+.shelf li:hover .t { color: var(--thread); }
+.shelf .t { transition: color .25s; overflow-wrap: anywhere; hyphens: auto; }
+@media (max-width: 1060px) { .shelf .t { font-size: 22px; } }
+@media (prefers-reduced-motion: reduce) { .shelf li, .shelf li:hover { transition: none; transform: none; } }
+
+/* Off the clock: designed posters, not studio art (copyright). Each is a colour field with a fine woven
+   texture, the title set big, and his own line sliding up on hover, focus or tap (12 Nov 2026). */
+.shelf-head .hint { color: var(--thread); }
+.posters li.poster { position: relative; overflow: hidden; cursor: pointer; isolation: isolate;
+  background: var(--bg); color: var(--fg); border: 0; border-radius: 3px; padding: 14px 14px 16px;
+  box-shadow: 0 14px 30px -22px rgba(0, 0, 0, .6); }
+.posters li.poster::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .06) 0 1px, transparent 1px 4px),
+              repeating-linear-gradient(90deg, rgba(0, 0, 0, .06) 0 1px, transparent 1px 4px); }
+.posters li.poster::after { content: ""; position: absolute; left: 14px; right: 14px; top: 40px; height: 2px; background: var(--ac); opacity: .9; }
+.posters .spine { color: var(--ac); font-size: 13px; }
+.posters .t { color: var(--fg); font-size: 30px; line-height: .98; margin-top: auto; }
+.posters .why { color: var(--fg); opacity: .75; margin-top: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+.posters .line { position: absolute; inset: auto 0 0 0; margin: 0; padding: 16px 14px 18px; background: var(--fg); color: var(--bg);
+  font-family: var(--serif); font-size: 19px; line-height: 1.22; transform: translateY(101%); transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+.posters li.poster:hover, .posters li.poster:focus-visible, .posters li.poster.open { transform: translateY(-8px); box-shadow: 0 26px 40px -24px rgba(0, 0, 0, .7); }
+.posters li.poster:hover .t { color: var(--fg); }
+.posters li.poster:hover .line, .posters li.poster:focus-visible .line, .posters li.poster.open .line { transform: none; }
+.posters li.poster:focus-visible { outline: 2px solid var(--thread); outline-offset: 3px; }
+.shelf-note { margin-top: 26px; font-family: var(--serif); font-size: clamp(22px, 2.2vw, 28px); line-height: 1.2; max-width: 36ch; }
+@media (max-width: 1060px) { .posters .t { font-size: 24px; } .posters .line { font-size: 17px; } }
+@media (max-width: 860px) { .posters .t { font-size: 26px; } }
+@media (prefers-reduced-motion: reduce) { .posters .line { transition: none; } }
+/* narrower screens: the posters sit on one shelf you swipe along, instead of stacking three rows deep */
+@media (max-width: 860px) {
+  .shelf ol.posters { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter));
+    padding: 12px var(--gutter) 18px; scrollbar-width: none; }
+  .shelf ol.posters::-webkit-scrollbar { display: none; }
+  .posters li.poster { flex: 0 0 34%; scroll-snap-align: start; }
+}
+@media (max-width: 560px) { .posters li.poster { flex-basis: 62%; } }
+
+/* Off the clock: real posters and cover art (his call, 12 Nov 2026), shown small with a credit line.
+   The art fills the tile; the title sits on a dark fade at the foot; his line still slides up over it. */
+.posters li.poster.has-art { background: #0a0a0a; color: #fff; justify-content: flex-end; }
+.posters li.poster.has-art::before, .posters li.poster.has-art::after { display: none; }
+.posters .art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+.posters li.poster.has-art:hover .art { transform: scale(1.04); }
+.posters li.poster.has-art .spine { position: absolute; top: 10px; left: 10px; background: #0a0a0a; color: #fff; padding: 3px 7px; border-radius: 2px; font-size: 11px; }
+.posters li.poster.has-art .t, .posters li.poster.has-art .why { position: relative; color: #fff; margin-top: 0; }
+.posters li.poster.has-art .t { font-size: 22px; text-shadow: 0 1px 8px rgba(0, 0, 0, .6); }
+.posters li.poster.has-art .why { margin-top: 6px; opacity: .85; }
+/* a dark fade under the title so it reads over any poster */
+.posters li.poster.has-art .t::before { content: ""; position: absolute; left: -14px; right: -14px; bottom: -40px; height: 170px; z-index: -1;
+  background: linear-gradient(to top, rgba(0, 0, 0, .88), rgba(0, 0, 0, .55) 55%, rgba(0, 0, 0, 0)); pointer-events: none; }
+/* the line covers the title fully when it slides up */
+.posters li.poster.has-art .line { background: #0a0a0a; color: #fff; border-top: 2px solid var(--thread); z-index: 2; }
+/* FIFA has no cover here, only the series logo, set on a white plate */
+.posters .logo { width: 82%; margin: 34px auto 0; background: #fff; padding: 10px 12px; border-radius: 3px; display: block; }
+.art-credit { margin-top: 10px; }
+@media (max-width: 1060px) { .posters li.poster.has-art .t { font-size: 19px; } }
+@media (prefers-reduced-motion: reduce) { .posters .art { transition: none; } }
+
+/* Control: a tap turns the poster over to the frame he made in the game's photo mode (12 Nov 2026) */
+.posters .turn { position: absolute; top: 10px; right: 10px; font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
+  background: var(--thread); color: #fff; padding: 3px 7px; border-radius: 2px; }
+.posters li.flip .back { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; gap: 10px; padding: 0 0 14px; background: #0a0a0a; color: #fff;
+  opacity: 0; transform: perspective(900px) rotateY(-90deg); transform-origin: 50% 50%; pointer-events: none;
+  transition: transform .55s cubic-bezier(.2, .7, .2, 1), opacity .25s; }
+.posters li.flip.open .back { opacity: 1; transform: none; pointer-events: auto; }
+.posters li.flip.open .art { transform: perspective(900px) rotateY(90deg); opacity: 0; transition: transform .45s, opacity .3s; }
+.posters li.flip .back img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 35%; display: block; border-bottom: 2px solid var(--thread); }
+.posters li.flip .b-line { margin: 0 12px; font-family: var(--serif); font-size: 18px; line-height: 1.2; }
+.posters li.flip .b-note { margin: auto 12px 0; font-size: 12.5px; line-height: 1.45; color: #bdbdbd; }
+@media (max-width: 1060px) { .posters li.flip .b-line { font-size: 16px; } .posters li.flip .b-note { font-size: 11.5px; } }
+@media (prefers-reduced-motion: reduce) { .posters li.flip .back, .posters li.flip.open .art { transition: none; } }
+/* with the Games card gone, the two remaining cards share the row */
+.life .hello, .life .court { grid-column: span 3; }
+@media (max-width: 860px) { .life .hello, .life .court { grid-column: span 1; } }
+/* the hint sits as a pull-tab on the right edge, clear of the cover's logo and the title */
+.posters .turn { top: 46%; right: 0; border-radius: 3px 0 0 3px; padding: 5px 8px; }
+.posters li.flip.open .turn { opacity: 0; }

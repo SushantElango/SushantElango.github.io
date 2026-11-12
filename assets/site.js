@@ -579,3 +579,13 @@ addEventListener('scroll', () => {
     cards.forEach(c => c.classList.toggle('hide', b.dataset.f !== 'all' && c.dataset.cat !== b.dataset.f));
   });
 })();
+
+/* ---------------- Off the clock: a tap on a poster shows its line (hover does it on a desktop) ---------------- */
+(function posters() {
+  const ps = [...document.querySelectorAll('.poster')]; if (!ps.length) return;
+  const toggle = p => { const on = !p.classList.contains('open'); ps.forEach(x => x.classList.remove('open')); p.classList.toggle('open', on); };
+  ps.forEach(p => {
+    p.addEventListener('click', () => toggle(p));
+    p.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(p); } });
+  });
+})();
