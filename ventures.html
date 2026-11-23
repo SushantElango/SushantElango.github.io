@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ventures · Sushant Elango</title>
-<meta name="description" content="RideRutgers at ScarletPitch, and Iterum at TechStart 2026.">
+<meta name="description" content="Proximity at HackPrinceton, RideRutgers at ScarletPitch, and Iterum at TechStart 2026.">
 <meta name="theme-color" content="#f3f0e8">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://sushantelango.com/ventures.html">
@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cinzel:wght@400;500&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Courier+Prime&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=82">
+<link rel="stylesheet" href="assets/site.css?v=83">
 </head>
 <body class="page-ventures">
 
@@ -48,12 +48,53 @@
   <section class="page-head">
     <div class="label">Ventures · Competitions</div>
     <h1>Ventures<em>.</em></h1>
-    <p class="lede">Two ideas I took to a stage: a student rideshare and a pre-demolition audit.</p>
+    <p class="lede">Three ideas I took to a stage: a neighborhood finder, a student rideshare and a pre-demolition audit.</p>
+  </section>
+
+  <!-- Proximity, HackPrinceton Fall 2026 -->
+  <section class="chapter" id="proximity" data-anchor="left">
+    <div class="ch-head"><span class="num">01</span><span class="label">Proximity · HackPrinceton Fall 2026</span><span class="rule"></span></div>
+    <figure class="ph band real reveal" data-slot="proximity"><img src="assets/photos/ventures/proximity-results.jpg" alt="The Proximity results screen: a renter's profile on the left, a map of eight areas around New Brunswick with the top three matches numbered, and a card for the first match, Metuchen, listing why it matched and its main compromise" loading="lazy"><figcaption>The results screen, with the demo example loaded</figcaption></figure>
+    <div class="cols">
+      <div class="prose reveal">
+        <span class="badge-now">Hackathon project · Nov 13 – 15, 2026</span>
+        <h2 style="margin-top:18px">Rank the neighborhood, <em>not the listing.</em></h2>
+        <p>Proximity is power. Siddhesh Venkat and I built it in 36 hours at HackPrinceton, Princeton University. It was the first hackathon for both of us.</p>
+        <h3 class="sub">The problem</h3>
+        <p>Students looking for an apartment juggle a dozen tabs of Zillow, Google Maps and Reddit to answer one question: which neighborhood fits my life? Rent sites describe the unit, not the area.</p>
+        <h3 class="sub">What it does</h3>
+        <p>A renter describes how they want to live: budget, commute and the places they care about. Proximity ranks 8 areas around Rutgers–New Brunswick on rent, transit time and 655 real nearby places, and explains why each area scored the way it did. A map with a satellite view shows the top three matches, each with its weakest point, and a Hot News panel lists local events we collected and checked by hand.</p>
+        <p>The data: HUD Fair Market Rents, Zillow, OpenStreetMap and commute times collected for each area.</p>
+        <h3 class="sub">How it works</h3>
+        <p>Each priority is a Must-have, Important or Nice, weighted 3, 2 and 1. Commutes and place counts are compared across the 8 areas, and rent is scored by the share of the budget left over. An area that fails a Must-have or goes over budget is out. No AI is involved in scoring, so the same inputs always give the same answer.</p>
+        <p>To change your mind, you type it: "I need a grocery store nearby." Google Gemini proposes the exact profile changes, each with the old value, the new one and a reason. Nothing changes until you click Apply, and then the app shows what moved. If Gemini is slow or fails, a keyword parser takes over.</p>
+      </div>
+      <div class="prose reveal">
+        <h3 class="sub">The fair-housing line</h3>
+        <p>Proximity holds no data on who lives in an area, and nothing about residents goes into the score. A request to match "people like me" is refused, and a test enforces that. A need tied to culture is answered with places, such as a grocery or a temple, never with who lives there.</p>
+        <h3 class="sub">Who we built it for</h3>
+        <p>I called five people choosing where to live near Rutgers, three students and two parents, and read through public Reddit threads. What they told us became features: the campus commute as its own score, interest categories, and the refine box for "quiet or lively". While we were still shaping the idea, we pitched it to a commercial real estate executive. He said apps like this already exist but none do it well, and one that did would be wonderful.</p>
+        <h3 class="sub">Who did what</h3>
+        <p>We are co-founders and equal partners. I worked on the problem framing and the scoring logic, ran the interviews, tested the app and reported bugs, and wrote the pitch and the Devpost. Siddhesh did all the data collection, fixed many of the bugs testing turned up, added the demo example and made the logo changes. We presented to the judges together: I gave the elevator pitch and made the case for the product, and Siddhesh ran the live demo.</p>
+        <p>We built with AI coding tools: I worked with Claude, directing and reviewing the code, and Siddhesh used GitHub Copilot and ChatGPT. Python, Streamlit, pandas, pydantic, pydeck, the Gemini API and 162 pytest tests.</p>
+        <h3 class="sub">What I learned</h3>
+        <p>I enjoyed every stressful part of it. When you care about what you are building, sleep and boredom stop registering: I did not sleep either night. By the time we had shipped the app and the Devpost, we were running on energy drinks and a lot of food, and walked into judging anxious and excited at once.</p>
+        <h3 class="sub">What's next</h3>
+        <p>A live feed that pulls the biggest upcoming local events into Hot News on its own, in place of the hand-collected list, and more metros beyond New Brunswick.</p>
+        <p class="proj-links"><a href="https://github.com/SushantElango/proximity" target="_blank" rel="noopener">Code on GitHub &rarr;</a><a href="https://devpost.com/software/proximity-dhovlu" target="_blank" rel="noopener">Devpost &rarr;</a></p>
+      </div>
+    </div>
+    <div class="hp-photos reveal" aria-label="Photos from HackPrinceton">
+      <figure class="ph polaroid tilt-l real"><img src="assets/photos/ventures/proximity-hp-opening.jpg" alt="A packed Princeton auditorium at HackPrinceton's opening talk, the screen introducing Stephen Wolfram as opening speaker" loading="lazy"><figcaption>Opening night, Princeton</figcaption></figure>
+      <figure class="ph polaroid tilt-r real"><img src="assets/photos/ventures/proximity-hp-building.jpg" alt="A laptop running Proximity on a lecture-hall desk, a map of New Brunswick areas with two matches numbered, a second laptop beside it" loading="lazy"><figcaption>Proximity, mid-build</figcaption></figure>
+      <figure class="ph polaroid tilt-l real"><img src="assets/photos/ventures/proximity-hp-badge.jpg" alt="Sushant and Siddhesh taking a selfie, one giving a thumbs up and the other holding up a HackPrinceton badge" loading="lazy"><figcaption>Siddhesh and me</figcaption></figure>
+      <figure class="ph polaroid tilt-r real"><img src="assets/photos/ventures/proximity-hp-submitted.jpg" alt="Sushant and Siddhesh late at night beside a laptop showing the Proximity Devpost page" loading="lazy"><figcaption>Submitted, the second night</figcaption></figure>
+    </div>
   </section>
 
   <!-- 05 The pitch -->
-  <section class="chapter" id="riderutgers" data-anchor="left">
-    <div class="ch-head"><span class="num">01</span><span class="label">The Pitch · RideRutgers, Feb 2026</span><span class="rule"></span></div>
+  <section class="chapter" id="riderutgers" data-anchor="right">
+    <div class="ch-head"><span class="num">02</span><span class="label">The Pitch · RideRutgers, Feb 2026</span><span class="rule"></span></div>
     <div class="cols flip">
       <div class="prose reveal">
         <h2>First pitch. <em>Semi-finals.</em></h2>
@@ -68,8 +109,8 @@
   </section>
 
   <!-- 06 Iterum -->
-  <section class="chapter" id="iterum" data-anchor="right">
-    <div class="ch-head"><span class="num">02</span><span class="label">Iterum · TechStart 2026</span><span class="rule"></span></div>
+  <section class="chapter" id="iterum" data-anchor="left">
+    <div class="ch-head"><span class="num">03</span><span class="label">Iterum · TechStart 2026</span><span class="rule"></span></div>
     <figure class="ph band real reveal" data-slot="iterum"><img src="assets/photos/ventures/iterum-cover.jpg" alt="The Iterum pitch deck cover: a Roman triumphal arch beside the line, Rome built with the stones of old buildings; we send ours to landfill" loading="lazy"><figcaption>The cover of our TechStart deck</figcaption></figure>
     <div class="cols">
       <div class="prose reveal">
@@ -97,6 +138,6 @@
 </main>
 <footer class="label">© Sushant Elango · New Brunswick, NJ</footer>
 
-<script src="assets/site.js?v=82"></script>
+<script src="assets/site.js?v=83"></script>
 </body>
 </html>

@@ -841,3 +841,21 @@ html[data-palette="mono"] #thread .thread-start { fill: #ffffff; }
 /* the hint sits as a pull-tab on the right edge, clear of the cover's logo and the title */
 .posters .turn { top: 46%; right: 0; border-radius: 3px 0 0 3px; padding: 5px 8px; }
 .posters li.flip.open .turn { opacity: 0; }
+
+/* ---------- Proximity (HackPrinceton, Nov 2026) ---------- */
+/* the results screenshot at its own 16:10 shape, so the map and the match card are never cropped */
+.ph.band[data-slot="proximity"] { height: auto; aspect-ratio: 16 / 10; max-height: 720px; }
+.ph.band[data-slot="proximity"] img { object-fit: contain; object-position: 50% 0; filter: none; }
+/* small headings inside a long story: Problem, What it does, How it works and so on */
+.prose h3.sub { font-family: var(--mono); font-weight: 400; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--thread); margin: 26px 0 8px; }
+.prose > h3.sub:first-child { margin-top: 0; }
+/* the newest project spans the whole row so the four below stay paired */
+.proj-grid .proj.wide { grid-column: 1 / -1; }
+/* more than one link under a card or a story */
+.proj-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+/* HackPrinceton photos under the Proximity story: four polaroids in a row, two on tablets, one on phones */
+.hp-photos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin-top: clamp(30px, 4vw, 54px); }
+.hp-photos .polaroid img { object-position: 50% 40%; }
+.hp-photos .hp-portrait img { object-position: 50% 25%; }
+@media (max-width: 960px) { .hp-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); } } @media (max-width: 560px) { .hp-photos { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+@media (prefers-reduced-motion: reduce) { .hp-photos .polaroid { transform: none; } }
