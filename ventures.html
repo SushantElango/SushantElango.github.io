@@ -55,32 +55,60 @@
   <section class="chapter" id="proximity" data-anchor="left">
     <div class="ch-head"><span class="num">01</span><span class="label">Proximity · HackPrinceton Fall 2026</span><span class="rule"></span></div>
     <figure class="ph band real reveal" data-slot="proximity"><img src="assets/photos/ventures/proximity-results.jpg" alt="The Proximity results screen: a renter's profile on the left, a map of eight areas around New Brunswick with the top three matches numbered, and a card for the first match, Metuchen, listing why it matched and its main compromise" loading="lazy"><figcaption>The results screen, with the demo example loaded</figcaption></figure>
-    <div class="cols">
-      <div class="prose reveal">
-        <span class="badge-now">Hackathon project · Nov 13 – 15, 2026</span>
-        <h2 style="margin-top:18px">Rank the neighborhood, <em>not the listing.</em></h2>
-        <p>Proximity is power. Siddhesh Venkat and I built it in 36 hours at HackPrinceton, Princeton University. It was the first hackathon for both of us.</p>
+    <div class="px-intro reveal">
+      <span class="badge-now">Hackathon project · Nov 13 – 15, 2026</span>
+      <h2>Proximity <em>Is Power.</em></h2>
+      <p>We built this project in 36 hours at HackPrinceton, Princeton University. It was the first hackathon for both Siddhesh Venkat and me.</p>
+    </div>
+    <div class="stats four reveal">
+      <div class="stat"><div class="n"><span data-count="36">36</span></div><span class="label">Hours to build</span></div>
+      <div class="stat"><div class="n"><span data-count="8">8</span></div><span class="label">Areas near Rutgers</span></div>
+      <div class="stat"><div class="n"><span data-count="655">655</span></div><span class="label">Real places mapped</span></div>
+      <div class="stat"><div class="n"><span data-count="5">5</span></div><span class="label">Renters interviewed</span></div>
+    </div>
+    <div class="px-cards">
+      <div class="card reveal">
         <h3 class="sub">The problem</h3>
-        <p>Students looking for an apartment juggle a dozen tabs of Zillow, Google Maps and Reddit to answer one question: which neighborhood fits my life? Rent sites describe the unit, not the area.</p>
-        <h3 class="sub">What it does</h3>
-        <p>A renter describes how they want to live: budget, commute and the places they care about. Proximity ranks 8 areas around Rutgers–New Brunswick on rent, transit time and 655 real nearby places, and explains why each area scored the way it did. A map with a satellite view shows the top three matches, each with its weakest point, and a Hot News panel lists local events we collected and checked by hand.</p>
-        <p>The data: HUD Fair Market Rents, Zillow, OpenStreetMap and commute times collected for each area.</p>
-        <h3 class="sub">How it works</h3>
-        <p>Each priority is marked Must-have, Important or Nice, weighted 3, 2 and 1. Commutes and place counts are compared across the 8 areas, and rent is scored by the share of the budget left over. An area that fails a Must-have or goes over budget is out. No AI is involved in scoring, so the same inputs always give the same answer.</p>
-        <p>To change your mind, you type it: "I need a grocery store nearby." Google Gemini proposes the exact profile changes, each with the old value, the new one and a reason. Nothing changes until you click Apply, and then the app shows what moved. If Gemini is slow or fails, a keyword parser takes over.</p>
+        <p>Rent sites show you the apartment and say nothing about the life around it. So students juggle Zillow, Google Maps and Reddit to work out which neighborhood actually fits.</p>
       </div>
+      <div class="card reveal">
+        <h3 class="sub">What it does</h3>
+        <p>We don't sell you an apartment. We help you find the life you want around it. Tell Proximity your budget, your commute and the places you care about, and it ranks 8 areas near Rutgers, so your next chapter looks the way you imagined.</p>
+      </div>
+      <div class="card reveal">
+        <h3 class="sub">How it works</h3>
+        <p>Clear rules do the ranking, so every score comes with a reason and the same answers always give the same result. Rents come from HUD and Zillow, places from OpenStreetMap. It matches you on places, never on who lives in an area.</p>
+      </div>
+    </div>
+    <div class="cols px-refine">
+      <figure class="ph px-shot real reveal"><img src="assets/photos/ventures/proximity-refine.jpg" alt="Proximity's refine box with the request &quot;I need a grocery store nearby&quot;, beside a What changed note explaining that Highland Park moved up to first place because of its grocery stores" loading="lazy"></figure>
       <div class="prose reveal">
-        <h3 class="sub">The fair-housing line</h3>
-        <p>Proximity holds no data on who lives in an area, and nothing about residents goes into the score. A request to match "people like me" is refused, and a test enforces that. A need tied to culture is answered with places, such as a grocery or a temple, never with who lives there.</p>
-        <h3 class="sub">Who we built it for</h3>
-        <p>I called five people choosing where to live near Rutgers, three students and two parents, and read through public Reddit threads. What they told us became features: the campus commute as its own score, interest categories, and the refine box for "quiet or lively". While we were still shaping the idea, we pitched it to a commercial real estate executive. He said apps like this already exist but none do it well, and one that did would be wonderful.</p>
-        <h3 class="sub">Who did what</h3>
-        <p>We are co-founders and equal partners. I worked on the problem framing and the scoring logic, ran the interviews, tested the app and reported bugs, and wrote the pitch and the Devpost. Siddhesh did all the data collection, fixed many of the bugs testing turned up, added the demo example and made the logo changes. We presented to the judges together: I gave the elevator pitch and made the case for the product, and Siddhesh ran the live demo.</p>
-        <p>We built with AI coding tools: I worked with Claude, directing and reviewing the code, and Siddhesh used GitHub Copilot and ChatGPT. It runs on Python, Streamlit, pandas, pydantic and pydeck, with the Gemini API, and has 162 pytest tests.</p>
+        <h3 class="sub">Change your mind in plain English</h3>
+        <p>Type "I need a grocery store nearby" and Proximity, using Google Gemini, suggests the exact changes to your profile. Nothing moves until you click Apply. Then it tells you what moved, and why.</p>
+      </div>
+    </div>
+    <div class="duo reveal">
+      <div>
+        <h3 class="sub">My part</h3>
+        <ul class="px-list"><li>Problem framing and the scoring logic</li><li>Interviews with 5 people choosing where to live</li><li>Testing and bug reports</li><li>The pitch and the Devpost</li></ul>
+      </div>
+      <div>
+        <h3 class="sub">Siddhesh's part</h3>
+        <ul class="px-list"><li>All the data collection</li><li>Many of the bug fixes</li><li>The demo example</li><li>The logo changes</li></ul>
+      </div>
+    </div>
+    <div class="prose px-wide reveal">
+      <p>We pitched to the judges together: I gave the elevator pitch, and Siddhesh ran the live demo. While we were still shaping the idea, we also pitched it to a commercial real estate executive, who said apps like this already exist but none do it well.</p>
+      <ul class="tags"><li>Python</li><li>Streamlit</li><li>Gemini API</li><li>162 tests</li><li>Built with Claude, GitHub Copilot and ChatGPT</li></ul>
+    </div>
+    <div class="duo reveal">
+      <div>
         <h3 class="sub">What I learned</h3>
-        <p>I enjoyed every stressful part of it. When you care about what you are building, sleep and boredom stop registering: I did not sleep either night. By the time we had shipped the app and the Devpost, we were running on energy drinks and a lot of food, and walked into judging anxious and excited at once.</p>
+        <p>I didn't sleep either night, and I loved every stressful part of it. When you care about what you're building, sleep and boredom stop registering. We walked into judging on energy drinks, anxious and excited at once.</p>
+      </div>
+      <div>
         <h3 class="sub">What's next</h3>
-        <p>A live feed that pulls the biggest upcoming local events into Hot News on its own, in place of the hand-collected list, and more metros beyond New Brunswick.</p>
+        <p>A live feed that pulls the biggest local events into the app on its own, and more cities beyond New Brunswick.</p>
         <p class="proj-links"><a href="https://github.com/SushantElango/proximity" target="_blank" rel="noopener">Code on GitHub &rarr;</a><a href="https://devpost.com/software/proximity-dhovlu" target="_blank" rel="noopener">Devpost &rarr;</a></p>
       </div>
     </div>
