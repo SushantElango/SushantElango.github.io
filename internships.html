@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cinzel:wght@400;500&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Courier+Prime&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=83">
+<link rel="stylesheet" href="assets/site.css?v=84">
 </head>
 <body class="page-internships">
 
@@ -51,67 +51,107 @@
     <p class="lede">Three teams, three very different businesses, and what I did inside each.</p>
   </section>
 
-  <!-- 04 Internships -->
+  <!-- 04 Internships: a strip of results first, then one case-study card per internship, newest first -->
   <section class="chapter" id="internships" data-anchor="left">
     <div class="ch-head"><span class="num">01</span><span class="label">Internships · 2025 – 2026</span><span class="rule"></span></div>
     <h2 class="reveal">Inside other people's <em>machines.</em></h2>
-    <div class="interns">
-      <article class="intern reveal">
-        <div class="meta">
-          <span class="label">Jul – Aug 2025 · Chennai</span>
-          <h3>Redington Ltd</h3>
-          <span class="role">IT Intern</span>
-          <figure class="ph thumb real" data-slot="redington"><img src="assets/photos/redington/office.jpg" alt="Sushant with his mentor and fellow interns in Redington's Chennai office, beside a Redington screen" loading="lazy"><figcaption>With my mentor and fellow interns at Redington, Chennai</figcaption></figure>
+
+    <ul class="case-stats reveal" aria-label="Results at a glance">
+      <li><a href="#piqit"><span class="n">28<span class="u">s</span></span><span class="what">AI ad, taken into a client pitch</span><span class="who">Piqit</span></a></li>
+      <li><a href="#tanindia"><span class="n">200<span class="u">+</span></span><span class="what">B2B visits after launch</span><span class="who">TanIndia</span></a></li>
+      <li><a href="#tanindia"><span class="n">50<span class="u">+</span></span><span class="what">Inbound leads after launch</span><span class="who">TanIndia</span></a></li>
+      <li><a href="#redington"><span class="n">3<span class="u">+</span></span><span class="what">Dashboards, built solo</span><span class="who">Redington</span></a></li>
+    </ul>
+    <p class="fine case-note reveal">TanIndia figures as reported by the business.</p>
+
+    <div class="cases">
+      <article class="case reveal" id="piqit">
+        <figure class="case-hero ad-film">
+          <video src="assets/photos/piqit/ad.mp4" poster="assets/photos/piqit/ad-poster.jpg" controls playsinline preload="none"></video>
+          <figcaption>The AI ad, 28 seconds. Story, screenplay, storyboard and every frame by me.</figcaption>
+        </figure>
+        <div class="case-text">
+          <header class="case-head">
+            <span class="label">Jul – Aug 2026 · Bengaluru</span>
+            <h3>Piqit Platforms</h3>
+            <span class="role">Finance &amp; Operations Intern</span>
+          </header>
+          <div class="case-block">
+            <span class="label">The business</span>
+            <p>Piqit runs sourcing, fulfillment and commerce operations for fashion and lifestyle brands. I worked across finance, warehouse operations, marketing and research, often in the same week.</p>
+          </div>
+          <div class="case-block">
+            <span class="label">What I did</span>
+            <p>In finance, I reconciled weekly marketplace settlements for fashion brands, including Gap and Lee Cooper, across Myntra, Flipkart, AJIO, Nykaa Fashion and Tata CLiQ: from gross sales, through discounts, tax and returns, to what each brand was owed.</p>
+            <p>I also wrote a market entry study for a client brand, and made an AI-generated cinematic ad, from screenplay to final cut.</p>
+          </div>
+          <div class="case-block result">
+            <span class="label">What came of it</span>
+            <p class="big">Leadership took the ad into a client pitch.</p>
+          </div>
+          <p class="tools">Excel · Increff · Seedance on OpenArt</p>
+          <div class="case-strip">
+            <figure><img src="assets/photos/piqit/floor.jpg" alt="Piqit's fulfillment warehouse in Bengaluru, blue crates and racks under a high roof" loading="lazy"><figcaption>The warehouse floor</figcaption></figure>
+            <figure><img src="assets/photos/piqit/aisle-me.jpg" alt="Sushant in a warehouse aisle at Piqit, next to stacked cartons" loading="lazy"><figcaption>Me, on the floor</figcaption></figure>
+            <figure><img src="assets/photos/piqit/racks.jpg" alt="A long aisle of racked shoe boxes in Piqit's warehouse" loading="lazy"><figcaption>The racks</figcaption></figure>
+          </div>
         </div>
-        <div class="body">
-          <p>The world's seventh-largest technology distributor, operating in 40+ countries. Working alone, I built dashboards on employee IT support tickets to show where internal IT support could serve its users better, and presented what I found to my mentor.</p>
-          <p>I also trained across SAP (SD, MM and FICO), running the full order-to-delivery cycle on historical data spanning millions of products and vendors.</p>
-          <p class="tools">Power BI · Tableau · SAP · SQL · Excel</p>
-        </div>
-        <div class="stat-big"><span class="n">3<span class="u">+</span></span><span class="label">Dashboards, built solo</span></div>
       </article>
-      <article class="intern reveal">
-        <div class="meta">
-          <span class="label">Jan – Mar 2026 · Remote</span>
-          <h3>TanIndia Earth Ventures</h3>
-          <span class="role">Marketing &amp; Web Development Intern</span>
-          <figure class="ph thumb real" data-slot="tanindia"><img src="assets/photos/tanindia/plant.jpg" alt="TanIndia's AAC block plant in Tamil Nadu" loading="lazy"><figcaption>The plant, Tamil Nadu</figcaption></figure>
-        </div>
-        <div class="body">
-          <p>A family business selling AAC blocks into construction. I built the front end of its first website, then worked with a software firm in Chennai that extended it, running reviews and corrections through launch.</p>
-          <p>I also owned the copy, the launch marketing plan and the internal documentation behind it.</p>
+
+      <article class="case reveal" id="tanindia">
+        <figure class="case-hero"><img src="assets/photos/tanindia/plant.jpg" alt="TanIndia's AAC block plant in Tamil Nadu" loading="lazy"><figcaption>The plant, Tamil Nadu</figcaption></figure>
+        <div class="case-text">
+          <header class="case-head">
+            <span class="label">Jan – Mar 2026 · Remote</span>
+            <h3>TanIndia Earth Ventures</h3>
+            <span class="role">Marketing &amp; Web Development Intern</span>
+          </header>
+          <div class="case-block">
+            <span class="label">The business</span>
+            <p>A family business selling AAC blocks into construction, going online with its first website.</p>
+          </div>
+          <div class="case-block">
+            <span class="label">What I did</span>
+            <p>I built the front end of the website, then worked with a software firm in Chennai that extended it, running reviews and corrections through launch. I also owned the copy, the launch marketing plan and the internal documentation behind it.</p>
+          </div>
+          <div class="case-block result">
+            <span class="label">What came of it</span>
+            <p class="figs"><span class="fig"><span class="n">200<span class="u">+</span></span><span class="sub">B2B visits</span></span><span class="fig"><span class="n">50<span class="u">+</span></span><span class="sub">Inbound leads</span></span></p>
+            <p>After launch, as reported by the business.</p>
+          </div>
           <p class="tools">HTML · CSS · JavaScript · SEO</p>
-          <div class="mini-gallery">
+          <div class="case-strip">
             <figure><img src="assets/photos/tanindia/silos.jpg" alt="Silos at the TanIndia plant" loading="lazy"><figcaption>Silos</figcaption></figure>
             <figure><img src="assets/photos/tanindia/blocks.jpg" alt="Stacked Tan Pro AAC blocks" loading="lazy"><figcaption>Finished blocks</figcaption></figure>
             <figure><img src="assets/photos/tanindia/lab.jpg" alt="TanIndia quality testing lab" loading="lazy"><figcaption>Quality lab</figcaption></figure>
           </div>
           <p class="fine">Photos from <a href="https://tanindia.co.in" target="_blank" rel="noopener">tanindia.co.in</a>, the site I built the front end of. The site is being redeveloped, so it may look different from the version I launched.</p>
         </div>
-        <div class="stat-big"><span class="n">200<span class="u">+</span></span><span class="label">B2B visits after launch, with 50+ inbound leads, as reported by the business</span></div>
       </article>
-      <article class="intern reveal">
-        <div class="meta">
-          <span class="label">Jul – Aug 2026 · Bengaluru</span>
-          <h3>Piqit Platforms</h3>
-          <span class="role">Finance &amp; Operations Intern</span>
-          <figure class="ph thumb real" data-slot="bengaluru"><img src="assets/photos/piqit/floor.jpg" alt="Piqit's fulfillment warehouse in Bengaluru, blue crates and racks under a high roof" loading="lazy"><figcaption>The warehouse floor, Bengaluru</figcaption></figure>
-        </div>
-        <div class="body">
-          <p>Piqit runs sourcing, fulfillment and commerce operations for fashion and lifestyle brands. I worked across finance, warehouse operations, marketing and research, often in the same week.</p>
-          <p>In finance, I reconciled weekly marketplace settlements for fashion brands, including Gap and Lee Cooper, across Myntra, Flipkart, AJIO, Nykaa Fashion and Tata CLiQ: from gross sales, through discounts, tax and returns, to what each brand was owed.</p>
-          <p>I also wrote a market entry study for a client brand, and made an AI-generated cinematic ad, from screenplay to final cut, that leadership took into a client pitch.</p>
-          <p class="tools">Excel · Increff · Seedance on OpenArt</p>
-          <figure class="ad-film">
-            <video src="assets/photos/piqit/ad.mp4" poster="assets/photos/piqit/ad-poster.jpg" controls playsinline preload="none"></video>
-            <figcaption>The AI ad, 28 seconds. Story, screenplay, storyboard and every frame by me.</figcaption>
-          </figure>
-          <div class="mini-gallery two">
-            <figure><img src="assets/photos/piqit/aisle-me.jpg" alt="Sushant in a warehouse aisle at Piqit, next to stacked cartons" loading="lazy"><figcaption>Me, on the floor</figcaption></figure>
-            <figure><img src="assets/photos/piqit/racks.jpg" alt="A long aisle of racked shoe boxes in Piqit's warehouse" loading="lazy"><figcaption>The racks</figcaption></figure>
+
+      <article class="case reveal" id="redington">
+        <figure class="case-hero"><img src="assets/photos/redington/office.jpg" alt="Sushant with his mentor and fellow interns in Redington's Chennai office, beside a Redington screen" loading="lazy"><figcaption>With my mentor and fellow interns at Redington, Chennai</figcaption></figure>
+        <div class="case-text">
+          <header class="case-head">
+            <span class="label">Jul – Aug 2025 · Chennai</span>
+            <h3>Redington Ltd</h3>
+            <span class="role">IT Intern</span>
+          </header>
+          <div class="case-block">
+            <span class="label">The business</span>
+            <p>The world's seventh-largest technology distributor, operating in 40+ countries.</p>
           </div>
+          <div class="case-block">
+            <span class="label">What I did</span>
+            <p>Working alone, I built dashboards on employee IT support tickets to show where internal IT support could serve its users better. I also trained across SAP (SD, MM and FICO), running the full order-to-delivery cycle on historical data spanning millions of products and vendors.</p>
+          </div>
+          <div class="case-block result">
+            <span class="label">What came of it</span>
+            <p class="figs"><span class="n">3<span class="u">+</span></span></p>
+            <p>Dashboards, built solo, and the findings presented to my mentor.</p>
+          </div>
+          <p class="tools">Power BI · Tableau · SAP · SQL · Excel</p>
         </div>
-        <div class="stat-big"><span class="n">28<span class="u">s</span></span><span class="label">AI ad, from screenplay to final cut</span></div>
       </article>
     </div>
   </section>
@@ -127,6 +167,6 @@
 </main>
 <footer class="label">© Sushant Elango · New Brunswick, NJ</footer>
 
-<script src="assets/site.js?v=83"></script>
+<script src="assets/site.js?v=84"></script>
 </body>
 </html>

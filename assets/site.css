@@ -880,3 +880,48 @@ h3.sub { font-family: var(--mono); font-weight: 400; font-size: 11px; letter-spa
 @media (max-width: 860px) { .stats.four { grid-template-columns: repeat(2, 1fr); } .px-cards { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 640px) { .duo { grid-template-columns: minmax(0, 1fr); } }.px-refine { grid-template-columns: 1.5fr 1fr; }
 @media (max-width: 860px) { .px-refine { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Internships as case-study cards, with a results strip on top (25 Nov 2026) ---------- */
+.case-stats { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 28px; }
+.case-stats li { background: var(--card); }
+.case-stats a { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 18px 18px 16px; color: inherit; text-decoration: none; transition: background .2s; }
+.case-stats a:hover, .case-stats a:focus-visible { background: var(--paper-2); }
+.case-stats .n { font-family: var(--serif); font-size: clamp(40px, 4.4vw, 58px); line-height: .95; }
+.case-stats .n .u, .case .result .n .u { color: var(--thread); }
+.case-stats .what { font-size: 14px; line-height: 1.35; color: var(--ink-2); }
+.case-stats .who { margin-top: auto; padding-top: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.case-note { margin-top: 8px; }
+
+.cases { display: grid; gap: clamp(22px, 3vw, 36px); margin-top: clamp(30px, 4vw, 52px); }
+.case { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(22px, 3vw, 44px); align-items: start;
+  background: var(--card); border: 1px solid var(--rule); border-top: 2px solid var(--ink); border-radius: 4px;
+  padding: clamp(18px, 2.4vw, 30px); box-shadow: 0 18px 40px -30px rgba(22,21,19,.45); scroll-margin-top: 90px; }
+.case-hero { margin: 0; position: sticky; top: 90px; }
+.case-hero img, .case-hero video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; filter: saturate(.85) contrast(1.02); background: #111; }
+.case-hero.ad-film { margin: 0; }
+.case-hero.ad-film video { aspect-ratio: 16 / 9; filter: none; }
+.case-hero figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 6px; }
+.case-head h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3vw, 38px); line-height: 1.05; margin: 8px 0 4px; }
+.case-head .role { font-size: 14px; color: var(--ink-2); }
+.case-block { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--rule); }
+.case-block .label { display: block; margin-bottom: 6px; }
+.case-block p { color: var(--ink-2); max-width: 62ch; }
+.case-block p + p { margin-top: 8px; }
+.case .result { border-top: 0; padding: 12px 0 2px 16px; border-left: 2px solid var(--thread); }
+.case .result .label { color: var(--thread); }
+.case .result .big { font-family: var(--serif); font-size: clamp(22px, 2.2vw, 27px); line-height: 1.2; color: var(--ink); }
+.case .result .figs { display: flex; gap: 22px; margin-bottom: 4px; }
+.case .result .n { font-family: var(--serif); font-size: clamp(44px, 4.6vw, 60px); line-height: .95; color: var(--ink); }
+.case .tools { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 18px; }
+.case-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+.case-strip figure { margin: 0; }
+.case-strip img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; filter: saturate(.85); }
+.case-strip figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 5px; }
+@media (max-width: 860px) {
+  .case-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .case { grid-template-columns: minmax(0, 1fr); }
+  .case-hero { position: static; }
+}
+@media (prefers-reduced-motion: reduce) { .case-stats a { transition: none; } }
+.case .result .fig { display: flex; flex-direction: column; gap: 4px; }
+.case .result .sub { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
