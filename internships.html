@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cinzel:wght@400;500&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Courier+Prime&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=85">
+<link rel="stylesheet" href="assets/site.css?v=86">
 </head>
 <body class="page-internships">
 
@@ -46,114 +46,404 @@
 
 <main id="main">
   <section class="page-head">
-    <div class="label">Internships · 2025 – 2026</div>
+    <div class="label">Internships · 2025 – now</div>
     <h1>Internships<em>.</em></h1>
-    <p class="lede">Three teams, three very different businesses, and what I did inside each.</p>
+    <p class="lede">Where I have worked so far, what I did there, and what each place taught me.</p>
   </section>
 
-  <!-- 04 Internships: a strip of results first, then one case-study card per internship, newest first -->
-  <section class="chapter" id="internships" data-anchor="left">
-    <div class="ch-head"><span class="num">01</span><span class="label">Internships · 2025 – 2026</span><span class="rule"></span></div>
+  <!-- 04 Internships: a thread still being stitched, newest first (from src/drafts/internships-thread.html, 26 Nov 2026) -->
+  <style>
+    body.page-internships #thread { display: none; }
+    .nb { --stitch: var(--thread); }
+    .nb-intro { max-width: 620px; font-size: 19px; color: var(--ink-2); margin-top: 16px; }
+
+    /* the notebook: a stitched spine on the left, pages to its right */
+    .nb-pages { position: relative; margin-top: clamp(40px, 6vw, 72px); padding-left: 56px; --p: 0; }
+    .nb-pages::before, .nb-pages::after { content: ""; position: absolute; z-index: 0; left: 14px; top: 100px; bottom: 0; width: 1.8px; }
+    .nb-pages::before { background: var(--rule); border-radius: 1px; }
+    .nb-pages::after { background: var(--stitch); border-radius: 1px; transform-origin: top; transform: scaleY(var(--p)); }
+
+    /* the needle: the thread is still moving */
+    .needle { position: relative; display: flex; align-items: flex-start; gap: 14px; min-height: 100px; margin-left: -56px; padding-bottom: clamp(34px, 5vw, 56px); }
+    .needle svg { flex: none; width: 30px; height: 100px; overflow: visible; }
+    .needle .eye { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+    .needle .shaft { fill: var(--ink); }
+    .needle .tail { fill: none; stroke: var(--stitch); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .needle-txt { padding-top: 14px; }
+    .needle-txt .label { color: var(--stitch); }
+    .needle svg { transform: scale(1.6); transform-origin: 15px 100%; }
+    .needle-txt p { font-size: 17px; color: var(--ink-2); margin-top: 10px; max-width: 46ch; }
+    .needle-txt p.big { font-family: var(--serif); font-style: italic; font-size: clamp(40px, 5.4vw, 72px); line-height: .95; color: var(--ink); margin-top: 8px; }
+    .needle-txt .label { font-size: 13px; }
+
+    /* notes up front: each note sits beside its heading */
+    /* one grid per section: the heading and media share a left column, the note and list a right one,
+       so every edge lines up and neither column leaves a hole */
+    .pg { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: clamp(28px, 4.5vw, 64px); align-items: start; }
+    .pg-l, .pg-r { display: flex; flex-direction: column; gap: 30px; min-width: 0; }
+    .pg .note { margin: 0; max-width: none; font-size: 14.5px; line-height: 1.55; padding: 20px 22px; transform: rotate(-.6deg); }
+    .page:nth-child(odd) .pg .note { transform: rotate(.5deg); }
+    .pg-media { margin: 0; }
+    .pg-list { padding-top: 2px; }
+    .pg-list .did li { font-size: 15.5px; }
+
+    /* explainers fold behind Try it; the question stays visible */
+    details.how > summary { cursor: pointer; list-style: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; align-items: center; }
+    details.how > summary::-webkit-details-marker { display: none; }
+    details.how > summary .label { grid-column: 1; color: var(--stitch); }
+    details.how > summary .q { grid-column: 1; display: block; margin-top: 6px; }
+    details.how > summary .open-hint { grid-column: 2; grid-row: 1 / span 2; font-family: var(--mono); font-size: 12px; letter-spacing: .04em; border: 1px solid var(--ink); border-radius: 999px; padding: 7px 14px; white-space: nowrap; }
+    details.how > summary .open-hint::after { content: "Try it +"; }
+    details.how[open] > summary .open-hint::after { content: "Close −"; }
+    details.how > summary:hover .open-hint { background: var(--ink); color: var(--paper); }
+    details.how .how-body { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--rule); }
+    .needle-txt a { color: inherit; text-decoration-color: var(--stitch); text-underline-offset: 4px; }
+
+    .page { position: relative; padding-bottom: clamp(64px, 9vw, 120px); scroll-margin-top: 90px; }
+    .knot { position: absolute; left: -48px; top: 6px; width: 14px; height: 26px; background: var(--paper); font-size: 0; color: var(--rule); --r: 0deg; transition: color .3s; z-index: 2; }
+    .knot::before, .knot::after { content: ""; position: absolute; left: 50%; top: 50%; width: 13px; height: 1.8px; border-radius: 1px; background: currentColor; transform: translate(-50%, -50%) rotate(calc(45deg + var(--r))); transition: transform .4s; }
+    .knot::after { transform: translate(-50%, -50%) rotate(calc(-45deg + var(--r))); }
+    .page.lit .knot { color: var(--stitch); --r: 90deg; }
+    .page.first { padding-bottom: 12px; }
+    .page.first .knot i { position: absolute; left: 50%; top: 100%; width: 1.8px; height: 34px; margin-left: -.9px; background: linear-gradient(var(--rule), transparent); }
+
+    .stamp { display: inline-block; font-family: "Courier Prime", monospace; font-size: 13px; color: var(--ink-2); border: 1px solid var(--ink-2); padding: 2px 8px; transform: rotate(-1.5deg); }
+    .page h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 4.6vw, 62px); line-height: .98; margin-top: 16px; letter-spacing: -.01em; }
+    .page .role { font-size: 15px; color: var(--ink-2); display: block; margin-top: 8px; }
+    .page .co { color: var(--muted); font-size: 15px; margin-top: 6px; max-width: 58ch; }
+    .take { font-family: var(--serif); font-size: clamp(22px, 2.2vw, 28px); line-height: 1.22; max-width: 26ch; margin-top: 22px; }
+    .take mark { background: linear-gradient(transparent 62%, rgba(194,54,43,.22) 62%); color: inherit; padding: 0 2px; }
+
+    .page-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); margin-top: 30px; align-items: start; }
+    .pg figure { margin: 0; }
+    .pg-media img, .pg-media video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; background: #111; filter: saturate(.85) contrast(1.02); }
+    .pg-media video { aspect-ratio: 16 / 9; filter: none; }
+    figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 6px; }
+    .nb-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+    .nb-strip img { aspect-ratio: 4 / 3; }
+    .nb-strip.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .did { list-style: none; display: grid; gap: 12px; padding: 0; }
+    .did li { color: var(--ink-2); line-height: 1.5; padding-left: 22px; position: relative; }
+    .did li::before { content: "\00d7"; position: absolute; left: 0; top: -1px; font-family: var(--mono); color: var(--stitch); }
+    .did b { color: var(--ink); font-weight: 600; }
+    .tools { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 16px; }
+
+    /* the note to self: his own words, typed and taped in */
+    .note { position: relative; margin-top: 28px; max-width: 480px; background: #fffdf6; border: 1px solid var(--rule); padding: 20px 22px 18px; transform: rotate(-.8deg);
+      box-shadow: 0 14px 30px -24px rgba(22,21,19,.5); font-family: "Courier Prime", monospace; font-size: 15.5px; line-height: 1.5; color: var(--ink); }
+    .note::before { content: ""; position: absolute; top: -7px; left: 26px; width: 46px; height: 14px; background: rgba(194,54,43,.2); transform: rotate(-3deg); }
+    .note .lbl { display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--stitch); margin-bottom: 8px; }
+    .note p + p { margin-top: 10px; }
+    .page:nth-child(odd) .note { transform: rotate(.7deg); }
+
+    /* the explainers: how the work actually worked */
+    .how { margin-top: 36px; border: 1px solid var(--ink); background: var(--card); padding: clamp(16px, 2.2vw, 26px); }
+    .how-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .how-head .label { color: var(--ink); }
+    .how .q { font-family: var(--serif); font-size: clamp(20px, 2vw, 25px); line-height: 1.25; margin-top: 10px; max-width: 40ch; }
+    .how .fine { margin-top: 12px; }
+    .seg { display: inline-flex; border: 1px solid var(--ink); border-radius: 999px; overflow: hidden; }
+    .seg button { font: inherit; font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em; padding: 6px 12px; background: none; border: 0; cursor: pointer; color: var(--ink); }
+    .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+    .fall { margin-top: 18px; display: grid; gap: 6px; }
+    .fall .row { display: grid; grid-template-columns: 150px minmax(0, 1fr) 92px; gap: 12px; align-items: center; font-size: 14px; opacity: .25; transition: opacity .35s; }
+    .fall .row.on { opacity: 1; }
+    .fall .track { display: block; position: relative; height: 18px; }
+    .fall .bar { position: absolute; top: 0; bottom: 0; background: var(--ink); border-radius: 2px; transition: left .45s, width .45s; }
+    .fall .row.cut .bar { background: repeating-linear-gradient(135deg, var(--stitch) 0 4px, rgba(194,54,43,.45) 4px 8px); }
+    .fall .row.total .bar { background: var(--stitch); }
+    .fall .amt { font-family: var(--mono); font-size: 12.5px; text-align: right; }
+    .fall .row.total { font-weight: 600; margin-top: 4px; padding-top: 8px; border-top: 1px solid var(--rule); }
+    .how-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+    .btn { font: inherit; font-family: var(--mono); font-size: 12px; letter-spacing: .04em; border: 1px solid var(--ink); border-radius: 999px; padding: 7px 14px; background: none; cursor: pointer; color: var(--ink); }
+    .btn:hover { background: var(--ink); color: var(--paper); }
+    .reveal-ans { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--rule); color: var(--ink-2); }
+    .reveal-ans[hidden] { display: none; }
+
+    .bars { margin-top: 18px; display: grid; gap: 8px; }
+    .bars .row { display: grid; grid-template-columns: 150px minmax(0, 1fr) 54px; gap: 12px; align-items: center; font-size: 14px; }
+    .bars .track { display: block; height: 16px; background: var(--paper-2); border-radius: 2px; overflow: hidden; }
+    .bars .bar { display: block; height: 100%; background: var(--ink); transition: width .45s; }
+    .bars .row:first-child .bar { background: var(--stitch); }
+    .bars .amt { font-family: var(--mono); font-size: 12.5px; text-align: right; }
+
+    .flow { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 18px; padding: 0; counter-reset: f; }
+    .flow li { position: relative; padding: 30px 14px 0 0; }
+    .flow li::before { counter-increment: f; content: "0" counter(f); position: absolute; top: 0; left: 0; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+    .flow li::after { content: ""; position: absolute; top: 20px; left: 0; right: 0; border-top: 2px dashed var(--rule); }
+    .flow li.me::after { border-top-color: var(--stitch); }
+    .flow .who { display: inline-block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; padding: 2px 6px; border: 1px solid var(--ink-2); color: var(--ink-2); margin-top: 8px; }
+    .flow li.me .who { background: var(--stitch); border-color: var(--stitch); color: #fff; }
+    .flow p { font-size: 14px; color: var(--ink-2); margin-top: 8px; line-height: 1.4; }
+    .flow b { display: block; font-family: var(--serif); font-weight: 400; font-size: 22px; color: var(--ink); line-height: 1.1; margin-top: 6px; }
+
+    @media (max-width: 860px) {
+      .pg { display: flex; flex-direction: column; gap: 26px; }
+      .pg-l, .pg-r { display: contents; }
+      .pg-head { order: 1; } .pg .note { order: 2; } .pg-media { order: 3; } .pg-list { order: 4; }
+      .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 18px; }
+    }
+    @media (max-width: 560px) {
+      .nb-pages { padding-left: 40px; }
+      .nb-pages::before, .nb-pages::after { left: 8px; }
+      .needle { margin-left: -40px; gap: 10px; }
+      .needle svg { width: 18px; transform: scale(1.3); }
+      details.how > summary { grid-template-columns: minmax(0, 1fr); }
+      details.how > summary .open-hint { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 12px; }
+      .knot { left: -38px; }
+      .fall .row, .bars .row { grid-template-columns: 104px minmax(0, 1fr) 70px; font-size: 13px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .nb-pages::after { transform: none; } .knot, .knot::before, .knot::after, .fall .bar, .fall .row, .bars .bar { transition: none; } }
+  </style>
+
+  <section class="chapter nb" id="internships" data-anchor="left">
+    <div class="ch-head"><span class="num">01</span><span class="label">Internships · 2025 – now</span><span class="rule"></span></div>
     <h2 class="reveal">Inside other people's <em>machines.</em></h2>
+    <p class="nb-intro reveal">Three companies, three industries, newest first. Each one changed how I see work, so I left a note to myself on every page.</p>
 
-    <ul class="case-stats reveal" aria-label="Results at a glance">
-      <li><a href="#piqit"><span class="n">28<span class="u">s</span></span><span class="what">AI ad, taken into a client pitch</span><span class="who">Piqit</span></a></li>
-      <li><a href="#tanindia"><span class="n">200<span class="u">+</span></span><span class="what">B2B visits after launch</span><span class="who">TanIndia</span></a></li>
-      <li><a href="#tanindia"><span class="n">50<span class="u">+</span></span><span class="what">Inbound leads after launch</span><span class="who">TanIndia</span></a></li>
-      <li><a href="#redington"><span class="n">3<span class="u">+</span></span><span class="what">Dashboards, built solo</span><span class="who">Redington</span></a></li>
-    </ul>
-    <p class="fine case-note reveal">TanIndia figures as reported by the business.</p>
+    <div class="nb-pages" id="nbPages">
 
-    <div class="cases">
-      <article class="case reveal" id="piqit">
-        <figure class="case-hero ad-film">
-          <video src="assets/photos/piqit/ad.mp4" poster="assets/photos/piqit/ad-poster.jpg" controls playsinline preload="none"></video>
-          <figcaption>The AI ad, 28 seconds. Story, screenplay, storyboard and every frame by me.</figcaption>
-        </figure>
-        <div class="case-text">
-          <header class="case-head">
-            <span class="label">Jul – Aug 2026 · Bengaluru</span>
-            <h3>Piqit Platforms</h3>
-            <span class="role">Finance &amp; Operations Intern</span>
-          </header>
-          <div class="case-block">
-            <span class="label">The business</span>
-            <p>Piqit runs sourcing, fulfillment and commerce operations for fashion and lifestyle brands. I worked across finance, warehouse operations, marketing and research, often in the same week.</p>
+      <div class="needle reveal">
+        <svg viewBox="0 -36 30 100" aria-hidden="true">
+          <path class="tail" d="M15 8 C 30 14, 2 26, 15 36 S 24 54, 15 64"/>
+          <ellipse class="eye" cx="15" cy="-6" rx="2.6" ry="5"/>
+          <path class="shaft" d="M13.6 -14 L16.4 -14 L15.6 -30 L15 -34 L14.4 -30 Z"/>
+        </svg>
+        <div class="needle-txt">
+          <span class="label">Next · Summer 2027</span>
+          <p class="big">The thread keeps going.</p>
+          <p>I'm looking for a Summer 2027 internship where I'm handed real work. <a href="#contact">Tell me about yours &rarr;</a></p>
+        </div>
+      </div>
+
+      <!-- PIQIT (newest) -->
+      <article class="page" id="piqit">
+        <span class="knot" aria-hidden="true">&times;</span>
+        <div class="pg">
+          <div class="pg-l">
+          <div class="pg-head">
+        <span class="stamp">Jul – Aug 2026 · Bengaluru</span>
+        <h3>Piqit Platforms</h3>
+        <span class="role">Finance &amp; Operations Intern</span>
+        <p class="co">Runs sourcing, fulfillment and commerce operations for fashion and lifestyle brands.</p>
+        <p class="take">Every week, I made the marketplaces' numbers agree on <mark>what each brand was owed.</mark></p>
           </div>
-          <div class="case-block">
-            <span class="label">What I did</span>
-            <p>In finance, I reconciled weekly marketplace settlements for fashion brands, including Gap and Lee Cooper, across Myntra, Flipkart, AJIO, Nykaa Fashion and Tata CLiQ: from gross sales, through discounts, tax and returns, to what each brand was owed.</p>
-            <p>I also wrote a market entry study for a client brand, and made an AI-generated cinematic ad, from screenplay to final cut.</p>
+          <figure class="pg-media">
+            <video src="assets/photos/piqit/ad.mp4" poster="assets/photos/piqit/ad-poster.jpg" controls playsinline preload="none"></video>
+            <figcaption>The AI ad, 28 seconds. Inspired by Cartier's campaigns, I built every shot from generated stills before any of it moved.</figcaption>
+            <div class="nb-strip two">
+              <figure><img src="assets/photos/piqit/floor.jpg" alt="Piqit's fulfillment warehouse in Bengaluru, blue crates and racks under a high roof" loading="lazy"><figcaption>The floor</figcaption></figure>
+              <figure><img src="assets/photos/piqit/racks.jpg" alt="A long aisle of racked shoe boxes in Piqit's warehouse" loading="lazy"><figcaption>The racks</figcaption></figure>
+            </div>
+          </figure>
           </div>
-          <div class="case-block result">
-            <span class="label">What came of it</span>
-            <p class="big">Leadership took the ad into a client pitch.</p>
+          <div class="pg-r">
+        <div class="note"><span class="lbl">Note to self</span>
+          <p>I wasn't sure about doing my internship at a startup. It turned out to be one of the most important experiences of my life.</p>
+          <p>I wasn't given intern work. I was given real responsibility: settlements one week, a market study the next, an ad after that, and I loved doing all of it. What I'll remember most is that even as an intern, my voice was heard.</p>
+        </div>
+          <div class="pg-list">
+            <ul class="did">
+              <li><b>Across the business:</b> finance, warehouse operations, marketing and research, often in the same week.</li>
+              <li><b>Finance:</b> reconciled weekly marketplace settlements for brands including Gap and Lee Cooper, across India's major marketplaces: Myntra, Flipkart, AJIO, Nykaa Fashion and Tata CLiQ.</li>
+              <li><b>Research:</b> wrote a market entry study for a client brand.</li>
+              <li><b>Content:</b> made an AI ad, from screenplay to final cut, that leadership took into a client pitch.</li>
+            </ul>
+            <p class="tools">Excel · Increff · Seedance on OpenArt</p>
           </div>
-          <p class="tools">Excel · Increff · Seedance on OpenArt</p>
-          <div class="case-strip two">
-            <figure><img src="assets/photos/piqit/floor.jpg" alt="Piqit's fulfillment warehouse in Bengaluru, blue crates and racks under a high roof" loading="lazy"><figcaption>The warehouse floor</figcaption></figure>
-            <figure><img src="assets/photos/piqit/racks.jpg" alt="A long aisle of racked shoe boxes in Piqit's warehouse" loading="lazy"><figcaption>The racks</figcaption></figure>
           </div>
         </div>
+        <details class="how" data-how="settle">
+          <summary><span class="label">Try it · How a settlement balances</span><span class="q">Two marketplaces sell the same ₹1,00,000 of a brand's clothes. Does the brand get paid the same?</span><span class="open-hint" aria-hidden="true"></span></summary>
+          <div class="how-body">
+            <div class="seg" role="group" aria-label="Marketplace"><button type="button" aria-pressed="true" data-mk="a">Marketplace A</button><button type="button" aria-pressed="false" data-mk="b">Marketplace B</button></div>
+          <div class="fall" id="fall"></div>
+          <div class="how-foot">
+            <button type="button" class="btn" id="fallStep">Next step &rarr;</button>
+            <button type="button" class="btn" id="fallWhy" aria-expanded="false" aria-controls="fallAns">Why the difference?</button>
+          </div>
+          <p class="reveal-ans" id="fallAns" hidden>Each marketplace has its own discounts, fees, returns rules and payout cycle. My weekly work was taking every marketplace's statement and making it land on one correct number for each brand.</p>
+          <p class="fine">Illustrative numbers, not Piqit's or any brand's.</p>
+          </div>
+        </details>
       </article>
 
-      <article class="case reveal" id="tanindia">
-        <figure class="case-hero"><img src="assets/photos/tanindia/plant.jpg" alt="TanIndia's AAC block plant in Tamil Nadu" loading="lazy"><figcaption>The plant, Tamil Nadu</figcaption></figure>
-        <div class="case-text">
-          <header class="case-head">
-            <span class="label">Jan – Mar 2026 · Remote</span>
-            <h3>TanIndia Earth Ventures</h3>
-            <span class="role">Marketing &amp; Web Development Intern</span>
-          </header>
-          <div class="case-block">
-            <span class="label">The business</span>
-            <p>A family business selling AAC blocks into construction, going online with its first website.</p>
+      <!-- TANINDIA -->
+      <article class="page" id="tanindia">
+        <span class="knot" aria-hidden="true">&times;</span>
+        <div class="pg">
+          <div class="pg-l">
+          <div class="pg-head">
+        <span class="stamp">Jan – Mar 2026 · Remote, from New Jersey</span>
+        <h3>TanIndia Earth Ventures</h3>
+        <span class="role">Marketing &amp; Web Development Intern</span>
+        <p class="co">A family business making AAC blocks, the lightweight concrete blocks builders use in place of brick. It had never had a website.</p>
+        <p class="take">I designed its first website. It brought in <mark>200+ B2B visits and 50+ inbound leads.</mark></p>
           </div>
-          <div class="case-block">
-            <span class="label">What I did</span>
-            <p>I built the front end of the website, then worked with a software firm in Chennai that extended it, running reviews and corrections through launch. I also owned the copy, the launch marketing plan and the internal documentation behind it.</p>
+          <figure class="pg-media"><img src="assets/photos/tanindia/plant.jpg" alt="TanIndia's AAC block plant in Tamil Nadu" loading="lazy"><figcaption>The plant, Tamil Nadu. Half a world from my desk.</figcaption>
+            <div class="nb-strip">
+              <figure><img src="assets/photos/tanindia/silos.jpg" alt="Silos at the TanIndia plant" loading="lazy"><figcaption>Silos</figcaption></figure>
+              <figure><img src="assets/photos/tanindia/blocks.jpg" alt="Stacked Tan Pro AAC blocks" loading="lazy"><figcaption>Finished blocks</figcaption></figure>
+              <figure><img src="assets/photos/tanindia/lab.jpg" alt="TanIndia quality testing lab" loading="lazy"><figcaption>Quality lab</figcaption></figure>
+            </div>
+          </figure>
           </div>
-          <div class="case-block result">
-            <span class="label">What came of it</span>
-            <p class="figs"><span class="fig"><span class="n">200<span class="u">+</span></span><span class="sub">B2B visits</span></span><span class="fig"><span class="n">50<span class="u">+</span></span><span class="sub">Inbound leads</span></span></p>
-            <p>After launch, as reported by the business.</p>
-          </div>
-          <p class="tools">HTML · CSS · JavaScript · SEO</p>
-          <div class="case-strip">
-            <figure><img src="assets/photos/tanindia/silos.jpg" alt="Silos at the TanIndia plant" loading="lazy"><figcaption>Silos</figcaption></figure>
-            <figure><img src="assets/photos/tanindia/blocks.jpg" alt="Stacked Tan Pro AAC blocks" loading="lazy"><figcaption>Finished blocks</figcaption></figure>
-            <figure><img src="assets/photos/tanindia/lab.jpg" alt="TanIndia quality testing lab" loading="lazy"><figcaption>Quality lab</figcaption></figure>
-          </div>
-          <p class="fine">Photos from <a href="https://tanindia.co.in" target="_blank" rel="noopener">tanindia.co.in</a>, the site I built the front end of. The site is being redeveloped, so it may look different from the version I launched.</p>
+          <div class="pg-r">
+        <div class="note"><span class="lbl">Note to self</span>
+          <p>I was teaching myself UI/UX at the time, just because I found it interesting. This was the first time I got to use it somewhere real.</p>
+          <p>I designed every single detail of this website myself, without AI. Seeing a real business go live on something I designed made me really happy.</p>
         </div>
+          <div class="pg-list">
+            <ul class="did">
+              <li><b>Design:</b> taught myself UI/UX and designed the site, without AI.</li>
+              <li><b>Build:</b> wrote the front end, then ran reviews and corrections with the Chennai software firm that extended it, through launch.</li>
+              <li><b>Launch:</b> wrote the site copy, the launch marketing plan (including the plan for social media) and the internal documentation behind it.</li>
+              <li><b>Result:</b> 200+ B2B visits and 50+ inbound leads after launch, as the business reported.</li>
+            </ul>
+            <p class="tools">HTML · CSS · JavaScript · SEO</p>
+          </div>
+          </div>
+        </div>
+        <details class="how">
+          <summary><span class="label">Try it · Who did what</span><span class="q">A website is a relay. Here is where I carried it.</span><span class="open-hint" aria-hidden="true"></span></summary>
+          <div class="how-body">
+            <span class="fine" style="margin:0">Red is my part</span>
+          <ol class="flow">
+            <li class="me"><span class="who">Me</span><b>Design</b><p>Designed the site, self-taught and without AI, and built the front end.</p></li>
+            <li><span class="who">The business</span><b>Approved it</b><p>Approved the design and went ahead with it.</p></li>
+            <li><span class="who">Chennai software firm</span><b>Extended it</b><p>Built on it, with changes of their own.</p></li>
+            <li class="me"><span class="who">Me</span><b>Reviews</b><p>Ran reviews and corrections through launch.</p></li>
+            <li><span class="who">The business</span><b>200+ · 50+</b><p>Visits and inbound leads after launch, as the business reported.</p></li>
+          </ol>
+          <p class="fine">Photos from <a href="https://tanindia.co.in" target="_blank" rel="noopener">tanindia.co.in</a>. The site is being redeveloped, so it may look different from the version I launched.</p>
+          </div>
+        </details>
       </article>
 
-      <article class="case reveal" id="redington">
-        <figure class="case-hero"><img src="assets/photos/redington/office.jpg" alt="Sushant with his mentor and fellow interns in Redington's Chennai office, beside a Redington screen" loading="lazy"><figcaption>With my mentor and fellow interns at Redington, Chennai</figcaption></figure>
-        <div class="case-text">
-          <header class="case-head">
-            <span class="label">Jul – Aug 2025 · Chennai</span>
-            <h3>Redington Ltd</h3>
-            <span class="role">IT Intern</span>
-          </header>
-          <div class="case-block">
-            <span class="label">The business</span>
-            <p>The world's seventh-largest technology distributor, operating in 40+ countries.</p>
+      <!-- REDINGTON (first) -->
+      <article class="page first" id="redington">
+        <span class="knot" aria-hidden="true">&times;<i></i></span>
+        <div class="pg">
+          <div class="pg-l">
+          <div class="pg-head">
+        <span class="stamp">Jul – Aug 2025 · Chennai</span>
+        <h3>Redington Ltd</h3>
+        <span class="role">IT Intern</span>
+        <p class="co">The world's seventh-largest technology distributor, operating in 40+ countries.</p>
+        <p class="take">I built 3+ dashboards, solo, showing where <mark>IT support could serve people better.</mark></p>
           </div>
-          <div class="case-block">
-            <span class="label">What I did</span>
-            <p>Working alone, I built dashboards on employee IT support tickets to show where internal IT support could serve its users better. I also trained across SAP (SD, MM and FICO), running the full order-to-delivery cycle on historical data spanning millions of products and vendors.</p>
+          <figure class="pg-media"><img src="assets/photos/redington/office.jpg" alt="Sushant with his mentor and fellow interns in Redington's Chennai office, beside a Redington screen" loading="lazy"><figcaption>With my mentor and fellow interns, Chennai</figcaption></figure>
           </div>
-          <div class="case-block result">
-            <span class="label">What came of it</span>
-            <p class="figs"><span class="n">3<span class="u">+</span></span></p>
-            <p>Dashboards, built solo, and the findings presented to my mentor.</p>
-          </div>
-          <p class="tools">Power BI · Tableau · SAP · SQL · Excel</p>
+          <div class="pg-r">
+        <div class="note"><span class="lbl">Note to self</span>
+          <p>This was my first time inside a real company, and honestly, it changed how I look at the things I buy.</p>
+          <p>I never knew how much work goes into getting a smartphone into my hands. There are so many layers and services behind it that most customers will never know they exist, and every single one of them matters.</p>
         </div>
+          <div class="pg-list">
+            <ul class="did">
+              <li><b>Analysis:</b> turned employee IT support tickets into dashboards, working alone, and presented the findings to my mentor.</li>
+              <li><b>SAP:</b> trained across SD, MM and FICO, running the full order-to-delivery cycle on historical data spanning millions of products and vendors.</li>
+            </ul>
+            <p class="tools">Power BI · Tableau · SAP · SQL · Excel</p>
+          </div>
+          </div>
+        </div>
+        <details class="how" data-how="tickets">
+          <summary><span class="label">Try it · How a ticket dashboard thinks</span><span class="q">The same tickets tell two different stories, depending on the question you ask them.</span><span class="open-hint" aria-hidden="true"></span></summary>
+          <div class="how-body">
+            <div class="seg" role="group" aria-label="Sort the tickets by"><button type="button" aria-pressed="true" data-view="count">Most tickets</button><button type="button" aria-pressed="false" data-view="wait">Longest wait</button></div>
+          <div class="bars" id="ticketBars"></div>
+          <p class="fine">Illustrative numbers. The real dashboards used Redington's data, which stays with Redington.</p>
+          </div>
+        </details>
       </article>
     </div>
   </section>
+
+  <script>
+    (function notebook() {
+      const pages = document.getElementById('nbPages'); if (!pages) return;
+      const items = [...pages.querySelectorAll('.page')];
+      const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function stitch() {
+        const r = pages.getBoundingClientRect(), mark = innerHeight * 0.6;
+        pages.style.setProperty('--p', still ? 1 : Math.min(1, Math.max(0, (mark - r.top) / r.height)).toFixed(4));
+        items.forEach(it => it.classList.toggle('lit', still || it.getBoundingClientRect().top < mark));
+      }
+      addEventListener('scroll', stitch, { passive: true }); addEventListener('resize', stitch); stitch();
+
+      // the thread behind the needle moves like a snake: one wave travelling down its length,
+      // widest just below the eye and easing to nothing where it joins the stitched spine
+      const tail = document.querySelector('.needle .tail');
+      if (tail) {
+        const Y0 = 8, Y1 = 64, AMP = 7, WAVE = 30, SPEED = 0.45; // px, px, px per wavelength, cycles per second
+        const shape = t => {
+          let d = '';
+          for (let y = Y0; y <= Y1; y += 1.5) {
+            const u = (y - Y0) / (Y1 - Y0);                     // 0 at the eye, 1 at the spine
+            const amp = AMP * Math.sin(Math.PI * Math.min(1, u * 1.15)) * (1 - u * 0.35);
+            const x = 15 + amp * Math.sin(2 * Math.PI * ((y - Y0) / WAVE - t * SPEED));
+            d += (d ? ' L' : 'M') + x.toFixed(2) + ' ' + y.toFixed(2);
+          }
+          return d;
+        };
+        if (still) { tail.setAttribute('d', shape(0)); }
+        else {
+          const box = tail.closest('.needle');
+          const loop = now => {
+            const r = box.getBoundingClientRect();
+            if (r.bottom > 0 && r.top < innerHeight) tail.setAttribute('d', shape(now / 1000)); // only draw while on screen
+            requestAnimationFrame(loop);
+          };
+          requestAnimationFrame(loop);
+        }
+      }
+
+      // Redington: the same tickets, sorted by two different questions (illustrative)
+      const tk = document.getElementById('ticketBars');
+      if (tk) {
+        const data = [['Passwords and access', 46, 0.6], ['Software installs', 31, 2.8], ['Email', 24, 1.1], ['Hardware', 17, 4.3], ['Network', 12, 3.4]];
+        const draw = v => {
+          const k = v === 'count' ? 1 : 2, max = Math.max(...data.map(d => d[k]));
+          const rows = [...data].sort((a, b) => b[k] - a[k]);
+          tk.innerHTML = rows.map(d => `<div class="row"><span>${d[0]}</span><span class="track"><span class="bar" style="width:${(d[k] / max * 100).toFixed(1)}%"></span></span><span class="amt">${v === 'count' ? d[1] : d[2].toFixed(1) + ' d'}</span></div>`).join('');
+        };
+        const seg = tk.closest('.how').querySelectorAll('[data-view]');
+        seg.forEach(b => b.addEventListener('click', () => { seg.forEach(x => x.setAttribute('aria-pressed', x === b)); draw(b.dataset.view); }));
+        draw('count');
+      }
+
+      // Piqit: a settlement, one deduction at a time (illustrative)
+      const fall = document.getElementById('fall');
+      if (fall) {
+        const M = {
+          a: [['Gross sales', 100000], ['Discounts', -15000], ['Tax', -9000], ['Returns', -10000], ['Marketplace fees', -12000]],
+          b: [['Gross sales', 100000], ['Discounts', -22000], ['Tax', -8000], ['Returns', -5000], ['Marketplace fees', -17000]]
+        };
+        let mk = 'a', step = 1;
+        const inr = n => '₹' + Math.abs(n).toLocaleString('en-IN');
+        const draw = () => {
+          const rows = M[mk]; let run = 0, html = '';
+          rows.forEach(([name, v], i) => {
+            const from = v < 0 ? run + v : 0, w = Math.abs(v); run += v;
+            html += `<div class="row ${v < 0 ? 'cut' : ''} ${i < step ? 'on' : ''}"><span>${name}</span><span class="track"><span class="bar" style="left:${from / 1000}%;width:${w / 1000}%"></span></span><span class="amt">${v < 0 ? '− ' : ''}${inr(v)}</span></div>`;
+          });
+          const done = step > rows.length;
+          html += `<div class="row total ${done ? 'on' : ''}"><span>Owed to the brand</span><span class="track"><span class="bar" style="left:0;width:${run / 1000}%"></span></span><span class="amt">${inr(run)}</span></div>`;
+          fall.innerHTML = html;
+          document.getElementById('fallStep').textContent = done ? 'Start again' : 'Next step →';
+        };
+        document.getElementById('fallStep').addEventListener('click', () => { step = step > M[mk].length ? 1 : step + 1; draw(); });
+        const seg = fall.closest('.how').querySelectorAll('[data-mk]');
+        seg.forEach(b => b.addEventListener('click', () => { seg.forEach(x => x.setAttribute('aria-pressed', x === b)); mk = b.dataset.mk; step = M[mk].length + 1; draw(); }));
+        const why = document.getElementById('fallWhy'), ans = document.getElementById('fallAns');
+        why.addEventListener('click', () => { const open = ans.hidden; ans.hidden = !open; why.setAttribute('aria-expanded', open); });
+        draw();
+      }
+    })();
+  </script>
 
   <section class="contact" id="contact">
     <div class="label">The thread continues</div>
@@ -166,6 +456,6 @@
 </main>
 <footer class="label">© Sushant Elango · New Brunswick, NJ</footer>
 
-<script src="assets/site.js?v=85"></script>
+<script src="assets/site.js?v=86"></script>
 </body>
 </html>
