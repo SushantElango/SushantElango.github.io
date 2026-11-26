@@ -925,3 +925,4 @@ h3.sub { font-family: var(--mono); font-weight: 400; font-size: 11px; letter-spa
 @media (prefers-reduced-motion: reduce) { .case-stats a { transition: none; } }
 .case .result .fig { display: flex; flex-direction: column; gap: 4px; }
 .case .result .sub { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.case-strip.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
